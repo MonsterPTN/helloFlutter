@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class PricingScreen extends StatelessWidget {
+  const PricingScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView(children: [
+        child: ListView(children: const [
           Expanded(
-            child: _widgetHeader(),
             flex: 1,
+            child: _widgetHeader(),
           ),
           Expanded(
-            child: _widgetBody(),
             flex: 9,
+            child: _widgetBody(),
           )
         ]),
       ),
@@ -39,7 +39,7 @@ class _widgetBody extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "Brand",
                   style: TextStyle(
@@ -57,7 +57,7 @@ class _widgetBody extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "VIN",
                   style: TextStyle(
@@ -76,7 +76,7 @@ class _widgetBody extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "CS",
                   style: TextStyle(
@@ -95,7 +95,7 @@ class _widgetBody extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "Plate number",
                   style: TextStyle(
@@ -115,13 +115,13 @@ class _widgetBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Model",
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 DropDownMenu2(),
-                Divider(
+                const Divider(
                   color: Colors.grey,
                   height: 2,
                 ),
@@ -132,7 +132,7 @@ class _widgetBody extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "Year Model",
                   style: TextStyle(
@@ -152,13 +152,13 @@ class _widgetBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Variant",
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 DropDownMenu3(),
-                Divider(
+                const Divider(
                   color: Colors.grey,
                   height: 2,
                 ),
@@ -170,13 +170,13 @@ class _widgetBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Color",
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 DropDownMenu4(),
-                Divider(
+                const Divider(
                   color: Colors.grey,
                   height: 2,
                 ),
@@ -187,7 +187,7 @@ class _widgetBody extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "Mileage",
                   style: TextStyle(
@@ -197,29 +197,25 @@ class _widgetBody extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: '10,000',
-                    suffix: Container(
-                      child: Text("Km"),
-                    ),
+                    suffix: Text("Km"),
                   ),
                 ),
               ],
             ),
           ),
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                MaterialButton(
-                  height: 50,
-                  onPressed: () {},
-                  child: Text(
-                    "SUBMIT",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  color: Colors.red,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              MaterialButton(
+                height: 50,
+                onPressed: () {},
+                color: Colors.red,
+                child: const Text(
+                  "SUBMIT",
+                  style: TextStyle(color: Colors.white),
                 ),
-              ],
-            ),
+              ),
+            ],
           )
         ],
       ),
@@ -245,11 +241,11 @@ class _DropDownMenu2State extends State<DropDownMenu2> {
     return Center(
       child: DropdownButton<String>(
           isExpanded: true,
-          hint: Text("Fortuner"),
-          icon: Icon(Icons.keyboard_arrow_down),
+          hint: const Text("Fortuner"),
+          icon: const Icon(Icons.keyboard_arrow_down),
           value: value2,
           items: items2.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() => this.value2 = value)),
+          onChanged: (value) => setState(() => value2 = value)),
     );
   }
 
@@ -279,11 +275,11 @@ class _DropDownMenu3State extends State<DropDownMenu3> {
     return Center(
       child: DropdownButton<String>(
           isExpanded: true,
-          hint: Text("Fortuner"),
-          icon: Icon(Icons.keyboard_arrow_down),
+          hint: const Text("Fortuner"),
+          icon: const Icon(Icons.keyboard_arrow_down),
           value: value3,
           items: items3.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() => this.value3 = value)),
+          onChanged: (value) => setState(() => value3 = value)),
     );
   }
 
@@ -313,11 +309,11 @@ class _DropDownMenu4State extends State<DropDownMenu4> {
     return Center(
       child: DropdownButton<String>(
           isExpanded: true,
-          hint: Text("Fortuner"),
-          icon: Icon(Icons.keyboard_arrow_down),
+          hint: const Text("Fortuner"),
+          icon: const Icon(Icons.keyboard_arrow_down),
           value: value4,
           items: items4.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() => this.value4 = value)),
+          onChanged: (value) => setState(() => value4 = value)),
     );
   }
 
@@ -349,8 +345,8 @@ class _MyWidgetState extends State<MyWidget> {
     return Center(
       child: DropdownButton<String>(
           isExpanded: true,
-          icon: Icon(Icons.keyboard_arrow_down),
-          hint: Text("Toyota"),
+          icon: const Icon(Icons.keyboard_arrow_down),
+          hint: const Text("Toyota"),
           value: value,
           items: items.map(buildMenuItem).toList(),
           onChanged: (value) => setState(() => this.value = value)),
@@ -373,11 +369,11 @@ class _widgetHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Icon(
+      const Icon(
         Icons.chevron_left,
         size: 24,
       ),
-      Text(
+      const Text(
         "Similar Models",
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
       ),

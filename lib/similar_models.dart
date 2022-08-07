@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SimilarModels extends StatelessWidget {
   const SimilarModels({Key? key}) : super(key: key);
@@ -12,13 +10,13 @@ class SimilarModels extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Expanded(
-              child: _widgetHeader(),
+            const Expanded(
               flex: 1,
+              child: _widgetHeader(),
             ),
             Expanded(
-              child: MyListView(),
               flex: 9,
+              child: MyListView(),
             ),
           ],
         ),
@@ -46,9 +44,6 @@ class MyListView extends StatelessWidget {
     Station(5, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
     Station(6, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
   ];
-  TextStyle? _styleText1(BuildContext context) {
-    return const TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,28 +55,27 @@ class MyListView extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 20),
             child: Column(
               children: [
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        item.nameCar,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        item.priceCar,
-                        style: TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      item.nameCar,
+                      style: const TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      item.priceCar,
+                      style: const TextStyle(
+                          color: Colors.red, fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(item.oDoCar, style: TextStyle(color: Colors.grey)),
-                    Text(item.time, style: TextStyle(color: Colors.grey)),
+                    Text(item.oDoCar,
+                        style: const TextStyle(color: Colors.grey)),
+                    Text(item.time, style: const TextStyle(color: Colors.grey)),
                   ],
                 )
               ],
@@ -98,19 +92,21 @@ class _widgetHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Icon(
-        Icons.chevron_left,
-        size: 24,
-      ),
-      Text(
-        "Similar Models",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-      ),
-      Icon(
-        Icons.list_rounded,
-        size: 24,
-      )
-    ]);
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          Icon(
+            Icons.chevron_left,
+            size: 24,
+          ),
+          Text(
+            "Similar Models",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+          Icon(
+            Icons.list_rounded,
+            size: 24,
+          )
+        ]);
   }
 }

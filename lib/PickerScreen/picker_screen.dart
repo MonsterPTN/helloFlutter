@@ -2,41 +2,112 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ui/listview_screen.dart';
+import 'package:ui/ListViewScreen/listview_screen.dart';
 
-class PickerScreen extends StatelessWidget {
+import '../Widget/cuppertino_widget.dart';
+import '../Widget/picker_image.dart';
+
+class PickerScreen extends StatefulWidget {
   const PickerScreen({Key? key}) : super(key: key);
 
+  @override
+  State<PickerScreen> createState() => _PickerScreenState();
+}
+
+List<Widget> pickerList = [
+  const Text("P"),
+  const Text("C"),
+  const Text("D"),
+  const Text("R"),
+  const Text("A"),
+];
+List<Widget> pickerList2 = [
+  const Text("1"),
+  const Text("2"),
+  const Text("3"),
+  const Text("4"),
+  const Text("5"),
+];
+
+class _PickerScreenState extends State<PickerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          SizedBox(
-            height: 70,
-          ),
-          Expanded(
-            child: _widgetHeader(),
-            flex: 1,
-          ),
-          Expanded(
-            child: _widgetPickeData(),
-            flex: 3,
-          ),
-          Expanded(
-            child: _widgetTextInput(),
-            flex: 3,
-          ),
-          Expanded(
-            child: Home(),
-            flex: 3,
-          ),
-        ]),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 70,
+            ),
+            _widgetHeader(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CupertinoScollPicker(text: pickerList),
+                CupertinoScollPicker(text: pickerList2),
+              ],
+            ),
+            _widgetTextInput(),
+            // const Expanded(
+            //   flex: 3,
+            //   child: Home(),
+            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const PickerImageWidget(),
+                PickerImageWidget(),
+                PickerImageWidget(),
+              ],
+            )
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _widgetHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          "Cancel",
+          style: TextStyle(
+              fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
+        ),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ListViewScreen()));
+          },
+          child: const Text(
+            "Add",
+            style: TextStyle(
+                fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _widgetTextInput() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        Text(
+          "Note(options)",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        TextField(
+          obscureText: true,
+          decoration: InputDecoration(
+              border: OutlineInputBorder(), labelText: "Max 32 caracters"),
+        )
+      ],
     );
   }
 }
@@ -59,6 +130,7 @@ class _HomeState extends State<Home> {
     return Row(
       children: [
         Expanded(
+          flex: 1,
           child: InkWell(
             onTap: () {
               getSingleImage();
@@ -70,7 +142,7 @@ class _HomeState extends State<Home> {
                         border: Border.all(color: Colors.grey)),
                     width: 100,
                     height: 100,
-                    child: Icon(
+                    child: const Icon(
                       CupertinoIcons.camera,
                       color: Colors.grey,
                     ),
@@ -83,9 +155,9 @@ class _HomeState extends State<Home> {
                     height: 100,
                     child: Image.file(singleImage!)),
           ),
-          flex: 1,
         ),
         Expanded(
+          flex: 1,
           child: InkWell(
             onTap: () {
               getSingleImage2();
@@ -97,7 +169,7 @@ class _HomeState extends State<Home> {
                         border: Border.all(color: Colors.grey)),
                     width: 100,
                     height: 100,
-                    child: Icon(
+                    child: const Icon(
                       CupertinoIcons.camera,
                       color: Colors.grey,
                     ),
@@ -110,9 +182,9 @@ class _HomeState extends State<Home> {
                     height: 100,
                     child: Image.file(singleImage2!)),
           ),
-          flex: 1,
         ),
         Expanded(
+          flex: 1,
           child: InkWell(
             onTap: () {
               getSingleImage3();
@@ -124,7 +196,7 @@ class _HomeState extends State<Home> {
                         border: Border.all(color: Colors.grey)),
                     width: 100,
                     height: 100,
-                    child: Icon(
+                    child: const Icon(
                       CupertinoIcons.camera,
                       color: Colors.grey,
                     ),
@@ -137,7 +209,6 @@ class _HomeState extends State<Home> {
                     height: 100,
                     child: Image.file(singleImage3!)),
           ),
-          flex: 1,
         ),
       ],
     );
@@ -189,7 +260,7 @@ class _widgetTextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: const [
         Text(
           "Note(options)",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -274,8 +345,8 @@ class _widgetPickeData extends StatelessWidget {
   }
 }
 
-class _widgetHeader extends StatelessWidget {
-  const _widgetHeader({
+class _widgetHeader1 extends StatelessWidget {
+  const _widgetHeader1({
     Key? key,
   }) : super(key: key);
 
@@ -284,7 +355,7 @@ class _widgetHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
+        const Text(
           "Cancel",
           style: TextStyle(
               fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
@@ -296,7 +367,7 @@ class _widgetHeader extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) => const ListViewScreen()));
           },
-          child: Text(
+          child: const Text(
             "Add",
             style: TextStyle(
                 fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
