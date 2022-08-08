@@ -1,9 +1,7 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
-import 'package:ui/PickerScreen/picker_screen.dart';
-import 'package:ui/Widget/widgetButtonAdd.dart';
-import 'package:ui/models/class.dart';
+import '../../Widget/button_add_widget.dart';
+import '../PickerScreen/picker_screen.dart';
+import '../models/class.dart';
 
 class DemoWidget extends StatefulWidget {
   const DemoWidget({Key? key}) : super(key: key);

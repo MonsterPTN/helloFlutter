@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ui/ListViewScreen/listview_screen.dart';
 
-import '../Widget/cuppertino_widget.dart';
-import '../Widget/picker_image.dart';
+import '../../Widget/cuppertino_widget.dart';
+import '../../Widget/picker_image.dart';
+import '../ListViewScreen/listview_screen.dart';
 
 class PickerScreen extends StatefulWidget {
   const PickerScreen({Key? key}) : super(key: key);
@@ -56,10 +56,11 @@ class _PickerScreenState extends State<PickerScreen> {
             // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
                 const PickerImageWidget(),
-                PickerImageWidget(),
-                PickerImageWidget(),
+                const PickerImageWidget(),
+                const PickerImageWidget(),
               ],
             )
           ],

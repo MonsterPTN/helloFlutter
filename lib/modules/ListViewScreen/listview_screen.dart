@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui/Widget/divider.dart';
-
+import '../../Widget/divider.dart';
 import '../models/station.dart';
 
 class ListViewScreen extends StatelessWidget {
@@ -154,7 +153,6 @@ class MyListView extends StatelessWidget {
   }
 
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     throw UnimplementedError();
   }
 }

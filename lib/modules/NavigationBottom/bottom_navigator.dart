@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ui/HomeScreen/home_sceen.dart';
-import 'package:ui/SettingScreen/setting_screen.dart';
+
+import '../HomeScreen/home_sceen.dart';
+import '../SettingScreen/setting_screen.dart';
 
 class BottomNavigatorScreen extends StatelessWidget {
   const BottomNavigatorScreen({Key? key}) : super(key: key);

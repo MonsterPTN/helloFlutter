@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/MyProfileScreen/my_profile_screen.dart';
 
-import '../Widget/switch_widget.dart';
-import '../Widget/touch_widget.dart';
+import '../../Widget/switch_widget.dart';
+import '../../Widget/touch_widget.dart';
+import '../MyProfileScreen/my_profile_screen.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);

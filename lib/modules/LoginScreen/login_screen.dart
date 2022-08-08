@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ui/ButtonScreen/button_screen.dart';
-import 'package:ui/PricingScreen/pricing_screen.dart';
-import 'package:ui/Widget/button_navigation.dart';
 import 'package:ui/Widget/text_field_widget.dart';
-import 'package:ui/Widget/widgetButtonAdd.dart';
+
 import 'package:ui/similar_models.dart';
 
+import '../../Widget/button_add_widget.dart';
+import '../../Widget/button_navigation.dart';
+import '../ButtonScreen/button_screen.dart';
 import '../NavigationBottom/bottom_navigator.dart';
+import '../PricingScreen/pricing_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
