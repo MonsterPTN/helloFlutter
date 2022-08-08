@@ -1,37 +1,17 @@
 import 'package:flutter/material.dart';
+
 import '../../Widget/divider.dart';
+import '../../Widget/search_field_widget.dart';
 import '../models/station.dart';
 
-class ListViewScreen extends StatelessWidget {
+class ListViewScreen extends StatefulWidget {
   const ListViewScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 80,
-            ),
-            const Expanded(
-              flex: 1,
-              child: _widgetTextInput(),
-            ),
-            Expanded(
-              flex: 3,
-              child: MyListView(),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  State<ListViewScreen> createState() => _ListViewScreenState();
 }
 
-class MyListView extends StatelessWidget {
-  MyListView({Key? key}) : super(key: key);
+class _ListViewScreenState extends State<ListViewScreen> {
   var station = <Station>[];
 
   List<Station> stations = [
@@ -46,15 +26,76 @@ class MyListView extends StatelessWidget {
     Station(5, "Open", "ELITE", "adamsmith@gmail.com", "Alejandro Manolo",
         "+65 9999 9999", "Last update July 1, 2022"),
   ];
+
   TextStyle? _styleText1(BuildContext context) {
     return const TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
   }
 
   @override
   Widget build(BuildContext context) {
-    SingleChildScrollView(
-      child: Column(),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  const Text(
+                    "UCA",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: const [
+                      Text(
+                        "Appraisal list",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Colors.black),
+                      ),
+                      Text(
+                        "28",
+                        textAlign: TextAlign.justify,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: const [
+                      Expanded(
+                        flex: 9,
+                        child: SearchFieldWidget(
+                          text: 'Max 32 characters',
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Icon(
+                          Icons.filter_list,
+                          size: 36,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Expanded(flex: 8, child: _widgetMain())
+          ],
+        ),
+      ),
     );
+  }
+
+  Widget _widgetMain() {
     return ListView.builder(
       itemCount: stations.length,
       itemBuilder: (context, index) {
@@ -82,11 +123,24 @@ class MyListView extends StatelessWidget {
                       ),
                       Text(
                         item.status,
+                        style: item.status == 'Open'
+                            ? const TextStyle(
+                                color: Colors.blue, fontWeight: FontWeight.bold)
+                            : item.status == 'Sucessful'
+                                ? const TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold)
+                                : const TextStyle(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold),
                       ),
                       const Icon(Icons.arrow_forward_ios),
                     ],
                   )
                 ],
+              ),
+              const SizedBox(
+                height: 8,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,6 +155,9 @@ class MyListView extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 8,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -111,9 +168,12 @@ class MyListView extends StatelessWidget {
                   Text(item.assessor),
                 ],
               ),
+              const SizedBox(
+                height: 8,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "Customer",
@@ -128,15 +188,29 @@ class MyListView extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(
+                height: 8,
+              ),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Vehicle details",
-                      style: _styleText1(context),
-                      textAlign: TextAlign.left,
+                    Row(
+                      children: [
+                        Text(
+                          "Vehicle details",
+                          style: _styleText1(context),
+                          textAlign: TextAlign.left,
+                        ),
+                        const Icon(
+                          Icons.arrow_circle_down,
+                          size: 14,
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 8,
                     ),
                     Text(
                       item.vehicleDetail,
@@ -149,84 +223,6 @@ class MyListView extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  State<StatefulWidget> createState() {
-    throw UnimplementedError();
-  }
-}
-
-class _widgetTextInput extends StatelessWidget {
-  const _widgetTextInput({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          flex: 1,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                "UCA",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Row(
-                  children: const [
-                    Text(
-                      "Appraisal list",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Colors.black),
-                    ),
-                    Text("28"),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 9,
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: "Max 32 caracters",
-                          suffixIcon: Icon(Icons.search),
-                        ),
-                      ),
-                    ),
-                    const Expanded(
-                      flex: 1,
-                      child: Icon(
-                        Icons.filter_list,
-                        size: 36,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        )
-      ],
     );
   }
 }

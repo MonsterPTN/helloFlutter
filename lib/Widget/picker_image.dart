@@ -36,7 +36,11 @@ class _PickerImageWidgetState extends State<PickerImageWidget> {
                   color: Colors.white, border: Border.all(color: Colors.grey)),
               width: 100,
               height: 100,
-              child: Image.file(singleImage!)),
+              child: Image.file(
+                singleImage!,
+                fit: BoxFit.cover,
+              ),
+            ),
     );
   }
 
