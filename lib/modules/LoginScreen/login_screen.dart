@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ui/Widget/text_field_widget.dart';
+import 'package:ui/modules/NewAppraisal/new_appraisal.dart';
 
 import 'package:ui/similar_models.dart';
+import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/button_add_widget.dart';
 import '../../Widget/button_navigation.dart';
@@ -26,56 +28,92 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _widgetTextSignIn(text: 'Sign In'),
-            const TextFieldWidget(text: 'Email', textInput: 'Your email here'),
-            const TextFieldWidget(
-                text: 'Password', textInput: 'Your password here'),
+            Row(
+              children: const [
+                Text(
+                  'Email',
+                  style: StylesText.mediumBoldText,
+                ),
+              ],
+            ),
+            const TextFieldWidget(textInput: 'Your email here'),
+            Row(
+              children: const [
+                Text(
+                  'Password',
+                  style: StylesText.mediumBoldText,
+                ),
+              ],
+            ),
+            const TextFieldWidget(textInput: 'Your password here'),
             _textForgotPass(text: 'Forgot password'),
             const SizedBox(
               height: 16,
             ),
             Row(
               children: [
-                ButtonAdd(
-                  text: 'Sign in',
-                  onPressed1: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const BottomNavigatorScreen()));
-                  },
+                Expanded(
+                  flex: 9,
+                  child: ButtonAdd(
+                    text: 'Sign in',
+                    onPressed1: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const BottomNavigatorScreen()));
+                    },
+                  ),
                 ),
-                const Icon(Icons.face)
+                const Expanded(
+                  flex: 1,
+                  child: Icon(Icons.face),
+                ),
               ],
             ),
-            ButtonNavigation(
-              text: 'SimilarModels',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SimilarModels()),
-                );
-              },
-            ),
-            ButtonNavigation(
-              text: 'PricingScreen',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PricingScreen()),
-                );
-              },
-            ),
-            ButtonNavigation(
-              text: 'DemoWidget',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DemoWidget()),
-                );
-              },
+            Wrap(
+              children: [
+                ButtonNavigation(
+                  text: 'SimilarModels',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SimilarModels()),
+                    );
+                  },
+                ),
+                ButtonNavigation(
+                  text: 'PricingScreen',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PricingScreen()),
+                    );
+                  },
+                ),
+                ButtonNavigation(
+                  text: 'DemoWidget',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DemoWidget()),
+                    );
+                  },
+                ),
+                ButtonNavigation(
+                  text: 'new appraisal',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NewAppraisalScreen()),
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),

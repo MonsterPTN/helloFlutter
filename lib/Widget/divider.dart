@@ -7,7 +7,7 @@ class DeviderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Divider(
       color: Colors.grey,
-      height: 2,
+      height: 3,
     );
   }
 }

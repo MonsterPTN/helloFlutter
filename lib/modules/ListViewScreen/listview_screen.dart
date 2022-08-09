@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/divider.dart';
 import '../../Widget/search_field_widget.dart';
@@ -26,10 +27,6 @@ class _ListViewScreenState extends State<ListViewScreen> {
     Station(5, "Open", "ELITE", "adamsmith@gmail.com", "Alejandro Manolo",
         "+65 9999 9999", "Last update July 1, 2022"),
   ];
-
-  TextStyle? _styleText1(BuildContext context) {
-    return const TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,9 +108,9 @@ class _ListViewScreenState extends State<ListViewScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Status",
-                    style: _styleText1(context),
+                    style: StylesText.mediumBoldText,
                   ),
                   Row(
                     children: [
@@ -145,13 +142,13 @@ class _ListViewScreenState extends State<ListViewScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Classification",
-                    style: _styleText1(context),
+                    style: StylesText.mediumBoldText,
                   ),
                   Text(
                     item.classification,
-                    style: _styleText1(context),
+                    style: StylesText.mediumBoldText,
                   ),
                 ],
               ),
@@ -161,9 +158,9 @@ class _ListViewScreenState extends State<ListViewScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Assessor",
-                    style: _styleText1(context),
+                    style: StylesText.mediumBoldText,
                   ),
                   Text(item.assessor),
                 ],
@@ -175,9 +172,9 @@ class _ListViewScreenState extends State<ListViewScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Customer",
-                    style: _styleText1(context),
+                    style: StylesText.mediumBoldText,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -197,13 +194,9 @@ class _ListViewScreenState extends State<ListViewScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      children: [
-                        Text(
-                          "Vehicle details",
-                          style: _styleText1(context),
-                          textAlign: TextAlign.left,
-                        ),
-                        const Icon(
+                      children: const [
+                        Text("Vehicle details", style: StylesText.medium14Text),
+                        Icon(
                           Icons.arrow_circle_down,
                           size: 14,
                         )
