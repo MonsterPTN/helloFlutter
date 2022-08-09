@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class StylesText {
   static const mediumBoldText = TextStyle(
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     fontSize: 16,
   );
   static const styleHeader = TextStyle(
@@ -13,7 +14,8 @@ class StylesText {
     fontWeight: FontWeight.bold,
     fontSize: 20,
   );
-  static const medium14Text = TextStyle(
-    fontSize: 14,
-  );
+  static const medium16Text =
+      TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
+  static const medium14Text =
+      TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey);
 }

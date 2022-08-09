@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui/themes/app_colors.dart';
 import 'PickerImage/pickerImage.dart';
 
 class MyProfileScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.red,
+        color: AppColors.primari,
         child: Column(children: [
           Expanded(
             flex: 2,

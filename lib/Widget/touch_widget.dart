@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:ui/themes/style_text.dart';
 
 class TouchWidget extends StatelessWidget {
   final String title;
   final Function()? onPress;
-  final Icon icon;
-  final Icon? icon2;
+  final SvgPicture icon;
+  final SvgPicture? icon2;
   final Widget? onOff;
   const TouchWidget(
       {Key? key,
@@ -18,9 +20,7 @@ class TouchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 10, bottom: 5),
       padding: const EdgeInsets.all(5),
-      height: 50,
       alignment: Alignment.center,
       child: InkWell(
         onTap: onPress,
@@ -35,7 +35,10 @@ class TouchWidget extends StatelessWidget {
                     icon,
                     Container(
                         margin: const EdgeInsets.only(left: 10),
-                        child: Text(title)),
+                        child: Text(
+                          title,
+                          style: StylesText.medium16Text,
+                        )),
                   ],
                 ),
                 Container(
@@ -43,6 +46,7 @@ class TouchWidget extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 15),
             const Divider(
               color: Colors.grey,
               height: 1,

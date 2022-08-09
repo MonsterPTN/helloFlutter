@@ -12,13 +12,15 @@ class _SwitchWidgetState extends State<SwitchWidget> {
   bool _switchValue = false;
   @override
   Widget build(BuildContext context) {
-    return CupertinoSwitch(
-      value: _switchValue,
-      onChanged: (value) {
-        setState(() {
-          _switchValue = value;
-        });
-      },
+    return SizedBox(
+      child: CupertinoSwitch(
+        value: _switchValue,
+        onChanged: (value) {
+          setState(() {
+            _switchValue = value;
+          });
+        },
+      ),
     );
   }
 }

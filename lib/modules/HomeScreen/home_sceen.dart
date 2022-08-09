@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/themes/app_colors.dart';
+import 'package:video_player/video_player.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -8,67 +11,88 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late VideoPlayerController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset('assets/video.mp4')
+      ..initialize().then(
+        (_) {
+          _controller.play();
+          _controller.setLooping(true);
+          _controller.setVolume(0);
+          setState(() {});
+        },
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: NetworkImage(
-                'https://bridgestone-mea.com/media/67891/how-your-tyres-are-affecting-your-car-s-performance.jpg'),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
+    return MaterialApp(
+      home: Scaffold(
+        body: Stack(
+          children: <Widget>[
+            SizedBox.expand(
+              child: FittedBox(
+                fit: BoxFit.cover,
+                child: SizedBox(
+                  width: _controller.value.size?.width ?? 0,
+                  height: _controller.value.size?.height ?? 0,
+                  child: VideoPlayer(_controller),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    flex: 2,
-                    child: _widgetLeftHeader(text: 'Hello, Adam Smith'),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: _widgetRightHeader(
-                      url:
-                          'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg',
-                      icon: const Icon(
-                        Icons.notifications,
-                        color: Colors.white,
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 76,
                       ),
-                    ),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: _widgetLeftHeader(text: 'Hello, Adam Smith'),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: _widgetRightHeader(
+                              url:
+                                  'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                  _widgetBodyButton()
                 ],
               ),
-              _widgetBodyButton()
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
   Widget _widgetLeftHeader({required String text}) {
-    return Container(
-      margin: const EdgeInsets.only(
-        left: 20,
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(
-            fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
-      ),
+    return Text(
+      text,
+      style: const TextStyle(
+          fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
     );
   }
 
-  Widget _widgetRightHeader({required String url, required Icon icon}) {
+  Widget _widgetRightHeader({
+    required String url,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        icon,
         Container(
           margin: const EdgeInsets.only(left: 12),
           decoration: BoxDecoration(
@@ -92,27 +116,32 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _widgetBodyButton() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Expanded(
-          flex: 1,
-          child: _widgetHome(
-            title: 'Appraisal',
-            onPressed: _widgetHome,
-            iconButton: const Icon(
-              Icons.settings,
-              size: 48,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              flex: 1,
+              child: _widgetHome(
+                title: 'Appraisal',
+                onPressed: _widgetHome,
+                iconButton: SvgPicture.asset('assets/svg/ic_appraisal.svg'),
+              ),
             ),
-          ),
+            Expanded(
+              flex: 1,
+              child: _widgetHome(
+                title: 'Pricing',
+                onPressed: _widgetHome,
+                iconButton: SvgPicture.asset('assets/svg/ic_pricing.svg'),
+              ),
+            ),
+          ],
         ),
-        Expanded(
-          flex: 1,
-          child: _widgetHome(
-              title: 'Settings',
-              onPressed: _widgetHome,
-              iconButton: const Icon(Icons.settings, size: 48)),
-        ),
+        const SizedBox(
+          height: 71,
+        )
       ],
     );
   }
@@ -121,35 +150,43 @@ class _HomeScreenState extends State<HomeScreen> {
     required String title,
     // String? subTitle,
     required Function onPressed,
-    required Icon iconButton,
+    required SvgPicture iconButton,
   }) {
     return Container(
+      height: 180,
       margin: const EdgeInsets.only(left: 10, right: 10),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-              margin: const EdgeInsets.only(top: 10, bottom: 10),
-              child: iconButton),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 10),
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
+          const SizedBox(
+            height: 20,
+          ),
+          iconButton,
+          const SizedBox(
+            height: 12,
+          ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           MaterialButton(
-            height: 50,
+            height: 48,
             onPressed: () {
               print("Hi");
             },
-            color: Colors.red,
+            color: AppColors.primari,
             child: const Text(
               "GO",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
             ),
           ),
         ],

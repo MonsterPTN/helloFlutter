@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/divider.dart';
@@ -16,16 +18,56 @@ class _ListViewScreenState extends State<ListViewScreen> {
   var station = <Station>[];
 
   List<Station> stations = [
-    Station(1, "Open", "ELITE", "adamsmith@gmail.com", "Alejandro Manolo",
-        "+65 9999 9999", "Last update July 1, 2022"),
-    Station(2, "Sucessful", "ELITE", "adamsmith@gmail.com", "Alejandro Manolo",
-        "+65 9999 9999", "Last update July 1, 2022"),
-    Station(3, "Open", "ELITE", "adamsmith@gmail.com", "Alejandro Manolo",
-        "+65 9999 9999", "Last update July 1, 2022"),
-    Station(4, "Unsucessful", "ELITE", "adamsmith@gmail.com",
-        "Alejandro Manolo", "+65 9999 9999", "Last update July 1, 2022"),
-    Station(5, "Open", "ELITE", "adamsmith@gmail.com", "Alejandro Manolo",
-        "+65 9999 9999", "Last update July 1, 2022"),
+    Station(
+        1,
+        "Open",
+        "₽250,000",
+        "ELITE",
+        "adamsmith@gmail.com",
+        "Alejandro Manolo",
+        "+65 9999 9999",
+        "Started on 08/05/2022  15:20",
+        "Ended on 08/10/2022  08:01"),
+    Station(
+        2,
+        "Sucessful",
+        "₽250,000",
+        "ELITE",
+        "adamsmith@gmail.com",
+        "Alejandro Manolo",
+        "+65 9999 9999",
+        "Started on 08/05/2022  15:20",
+        "Ended on 08/10/2022  08:01"),
+    Station(
+        3,
+        "Open",
+        "₽250,000",
+        "ELITE",
+        "adamsmith@gmail.com",
+        "Alejandro Manolo",
+        "+65 9999 9999",
+        "Started on 08/05/2022  15:20",
+        "Ended on 08/10/2022  08:01"),
+    Station(
+        4,
+        "Unsuccessful",
+        "₽250,000",
+        "ELITE",
+        "adamsmith@gmail.com",
+        "Alejandro Manolo",
+        "+65 9999 9999",
+        "Started on 08/05/2022  15:20",
+        "Ended on 08/10/2022  08:01"),
+    Station(
+        5,
+        "In-progress",
+        "₽250,000",
+        "ELITE",
+        "adamsmith@gmail.com",
+        "Alejandro Manolo",
+        "+65 9999 9999",
+        "Started on 08/05/2022  15:20",
+        "Ended on 08/10/2022  08:01"),
   ];
 
   @override
@@ -35,59 +77,92 @@ class _ListViewScreenState extends State<ListViewScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  const Text(
-                    "UCA",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    children: const [
-                      Text(
-                        "Appraisal list",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                            color: Colors.black),
-                      ),
-                      Text(
-                        "28",
-                        textAlign: TextAlign.justify,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    children: const [
-                      Expanded(
-                        flex: 9,
-                        child: SearchFieldWidget(
-                          text: 'Max 32 characters',
+            SingleChildScrollView(
+              child: Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 52,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text("Appraisal list", style: StylesText.styleHeader),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 33,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 12, right: 12),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 9,
+                                child: SearchFieldWidget(
+                                  maxLength: 32,
+                                  text: 'Search by free text',
+                                  icon: SvgPicture.asset(
+                                    'assets/svg/ic_search.svg',
+                                    height: 18.3,
+                                    width: 18.3,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: SvgPicture.asset(
+                                    'assets/svg/ic_filter.svg'),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Icon(
-                          Icons.filter_list,
-                          size: 36,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _widgetFilter(text: 'Number'),
+                            const SizedBox(
+                              width: 45,
+                            ),
+                            _widgetFilter(text: 'Date'),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(flex: 8, child: _widgetMain())
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _widgetFilter({required String text}) {
+    return SizedBox(
+      height: 42,
+      child: Row(
+        children: [
+          Text(text),
+          const SizedBox(
+            width: 6,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/svg/ic_arrow_top.svg'),
+              SvgPicture.asset('assets/svg/ic_arrow_bottom.svg'),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -103,41 +178,54 @@ class _ListViewScreenState extends State<ListViewScreen> {
             children: [
               const DeviderWidget(),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    "Status",
+                    "TMA-TO-000000003",
                     style: StylesText.mediumBoldText,
                   ),
                   Row(
                     children: [
-                      const Icon(
-                        Icons.error,
-                        color: Colors.blue,
+                      Icon(Icons.error,
+                          color: item.status == 'Open'
+                              ? AppColors.primari3
+                              : item.status == 'Sucessful'
+                                  ? AppColors.primari2
+                                  : item.status == 'Unsuccessful'
+                                      ? AppColors.primari
+                                      : AppColors.primari4),
+                      const SizedBox(
+                        width: 7.5,
                       ),
-                      Text(
-                        item.status,
-                        style: item.status == 'Open'
-                            ? const TextStyle(
-                                color: Colors.blue, fontWeight: FontWeight.bold)
-                            : item.status == 'Sucessful'
-                                ? const TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold)
-                                : const TextStyle(
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.bold),
+                      Text(item.status,
+                          style: item.status == 'Open'
+                              ? TextStyle(
+                                  color: AppColors.primari3,
+                                  fontWeight: FontWeight.bold)
+                              : item.status == 'Sucessful'
+                                  ? TextStyle(
+                                      color: AppColors.primari2,
+                                      fontWeight: FontWeight.bold)
+                                  : item.status == 'Unsuccessful'
+                                      ? TextStyle(
+                                          color: AppColors.primari,
+                                          fontWeight: FontWeight.bold)
+                                      : TextStyle(
+                                          color: AppColors.primari4,
+                                          fontWeight: FontWeight.bold)),
+                      const SizedBox(
+                        width: 14.5,
                       ),
-                      const Icon(Icons.arrow_forward_ios),
+                      SvgPicture.asset('assets/svg/ic_arrow_right.svg'),
                     ],
                   )
                 ],
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,7 +241,23 @@ class _ListViewScreenState extends State<ListViewScreen> {
                 ],
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Price",
+                    style: StylesText.mediumBoldText,
+                  ),
+                  Text(
+                    item.price,
+                    style: StylesText.medium16Text,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,11 +266,14 @@ class _ListViewScreenState extends State<ListViewScreen> {
                     "Assessor",
                     style: StylesText.mediumBoldText,
                   ),
-                  Text(item.assessor),
+                  Text(
+                    item.assessor,
+                    style: StylesText.medium16Text,
+                  ),
                 ],
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -179,14 +286,20 @@ class _ListViewScreenState extends State<ListViewScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(item.classification),
-                      Text(item.numberPhoneCustomer)
+                      Text(
+                        item.classification,
+                        style: StylesText.medium16Text,
+                      ),
+                      Text(
+                        item.numberPhoneCustomer,
+                        style: StylesText.medium16Text,
+                      )
                     ],
                   )
                 ],
               ),
               const SizedBox(
-                height: 8,
+                height: 13,
               ),
               Container(
                 alignment: Alignment.centerLeft,
@@ -194,20 +307,33 @@ class _ListViewScreenState extends State<ListViewScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      children: const [
-                        Text("Vehicle details", style: StylesText.medium14Text),
-                        Icon(
-                          Icons.arrow_circle_down,
-                          size: 14,
-                        )
+                      children: [
+                        const Text("Vehicle details",
+                            style: StylesText.mediumBoldText),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        SvgPicture.asset('assets/svg/ic_arrow_bottom_16.svg')
                       ],
                     ),
                     const SizedBox(
-                      height: 8,
+                      height: 10,
                     ),
-                    Text(
-                      item.vehicleDetail,
-                      style: const TextStyle(color: Colors.grey),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.vehicleDetailStart,
+                          style: StylesText.medium14Text,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          item.vehicleDetailEnd,
+                          style: StylesText.medium14Text,
+                        ),
+                      ],
                     ),
                   ],
                 ),

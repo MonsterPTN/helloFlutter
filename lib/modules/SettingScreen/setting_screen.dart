@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/switch_widget.dart';
 import '../../Widget/touch_widget.dart';
@@ -15,33 +17,50 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Scaffold(
+        body: Column(
           children: [
-            _widgetHeader(text: 'Setting'),
-            TouchWidget(
-                title: "My profile",
-                onPress: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyProfileScreen()));
-                },
-                icon: const Icon(Icons.person),
-                icon2: const Icon(Icons.border_color_outlined)),
-            const TouchWidget(
-                title: "Biometric login",
-                icon: Icon(Icons.lock_outline),
-                onOff: SwitchWidget()),
-            const TouchWidget(
-              title: "Change Password",
-              icon: Icon(Icons.border_color_outlined),
+            const SizedBox(
+              height: 52,
             ),
-            const TouchWidget(
+            _widgetHeader(text: 'Setting'),
+            const SizedBox(
+              height: 30,
+            ),
+            TouchWidget(
+              title: "My profile",
+              onPress: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyProfileScreen()));
+              },
+              icon: SvgPicture.asset('assets/svg/ic_user.svg'),
+              icon2: SvgPicture.asset('assets/svg/ic_arrow_right_red.svg'),
+            ),
+            const SizedBox(
+              height: 16.5,
+            ),
+            TouchWidget(
+                title: "Biometric login",
+                icon: SvgPicture.asset('assets/svg/ic_face_id.svg'),
+                onOff: const SwitchWidget()),
+            const SizedBox(
+              height: 16.5,
+            ),
+            TouchWidget(
+              title: "Change Password",
+              icon: SvgPicture.asset('assets/svg/ic_lock.svg'),
+              icon2: SvgPicture.asset('assets/svg/ic_edit.svg'),
+            ),
+            const SizedBox(
+              height: 16.5,
+            ),
+            TouchWidget(
               title: "Sign out",
-              icon: Icon(Icons.logout_outlined),
+              icon: SvgPicture.asset('assets/svg/ic_sign_out.svg'),
             ),
           ],
         ),
@@ -50,13 +69,10 @@ class _SettingScreenState extends State<SettingScreen> {
   }
 
   Widget _widgetHeader({required String text}) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 30),
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-      ),
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: StylesText.styleHeader,
     );
   }
 }

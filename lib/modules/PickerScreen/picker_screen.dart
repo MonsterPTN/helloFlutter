@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ui/Widget/text_field_widget.dart';
 
 import '../../Widget/cuppertino_widget.dart';
 import '../../Widget/picker_image.dart';
@@ -34,34 +35,36 @@ class _PickerScreenState extends State<PickerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 70,
-            ),
-            _widgetHeader(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CupertinoScollPicker(text: pickerList),
-                CupertinoScollPicker(text: pickerList2),
-              ],
-            ),
-            _widgetTextInput(),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                PickerImageWidget(),
-                PickerImageWidget(),
-                PickerImageWidget(),
-              ],
-            )
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 70,
+              ),
+              _widgetHeader(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CupertinoScollPicker(text: pickerList),
+                  CupertinoScollPicker(text: pickerList2),
+                ],
+              ),
+              _widgetTextInput(),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  PickerImageWidget(),
+                  PickerImageWidget(),
+                  PickerImageWidget(),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -104,10 +107,9 @@ class _PickerScreenState extends State<PickerScreen> {
         SizedBox(
           height: 16,
         ),
-        TextField(
-          obscureText: true,
-          decoration: InputDecoration(
-              border: OutlineInputBorder(), labelText: "Max 32 caracters"),
+        TextFieldWidget(
+          textInput: 'Max 32 character',
+          lengMax: 32,
         )
       ],
     );
