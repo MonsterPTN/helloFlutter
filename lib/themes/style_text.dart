@@ -11,8 +11,12 @@ class StylesText {
     fontSize: 24,
   );
   static const styleText1 = TextStyle(
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     fontSize: 20,
+  );
+  static const styleText2 = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
   );
   static const medium16Text =
       TextStyle(fontSize: 16, fontWeight: FontWeight.w400);

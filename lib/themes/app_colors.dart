@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class AppColors {
-  static final HexColor primari = HexColor('#EB241D');
+  static final HexColor primari = HexColor('#EB0A1E');
   static final HexColor primari2 = HexColor('#149A06');
   static final HexColor primari3 = HexColor('#2868E3');
   static final HexColor primari4 = HexColor('#808080');

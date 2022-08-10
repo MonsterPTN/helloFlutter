@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/Widget/app_bar_widget.dart';
+import 'package:ui/Widget/text_field_widget.dart';
 import 'package:ui/themes/app_colors.dart';
+import 'package:ui/themes/style_text.dart';
 import 'PickerImage/pickerImage.dart';
 
 class MyProfileScreen extends StatefulWidget {
@@ -13,80 +17,60 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: AppColors.primari,
-        child: Column(children: [
-          Expanded(
-            flex: 2,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _widgetHeader(
-                  text: 'My Profile',
-                  icon: const Icon(
-                    Icons.keyboard_arrow_left,
-                    size: 36,
-                    color: Colors.white,
-                  ),
+      appBar: AppBarWidget(
+        isShowBack: true,
+        title: 'My Profile',
+        colorAppBar: AppColors.primari,
+        colorTitle: Colors.white,
+      ),
+      body: SafeArea(
+        child: Container(
+          color: AppColors.primari,
+          child: Column(children: [
+            Expanded(
+              flex: 2,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 23,
+                    ),
+                    const PickImage(),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    Text(
+                      'Admam Smith',
+                      style:
+                          StylesText.styleText1.copyWith(color: Colors.white),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      'admamasmith@gmail.com',
+                      style:
+                          StylesText.styleText2.copyWith(color: Colors.white),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      'trs_admamith.cruz',
+                      style:
+                          StylesText.styleText2.copyWith(color: Colors.white),
+                    )
+                  ],
                 ),
-                const PickImage(),
-                _widgetText(text: 'Admam Smith'),
-                _widgetText2(text: 'admamasmith@gmail.com'),
-                _widgetText2(text: 'trs_admamith.cruz')
-              ],
+              ),
             ),
-          ),
-          Expanded(
-            flex: 3,
-            child: _widgetMain(),
-          )
-        ]),
-      ),
-    );
-  }
-
-  Widget _widgetHeader({required String text, required Icon icon}) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(margin: const EdgeInsets.only(left: 20), child: icon),
-          Text(
-            text,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            width: 24,
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _widgetText({required String text}) {
-    return Container(
-      margin: const EdgeInsets.only(top: 20),
-      child: Text(
-        text,
-        style: const TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-        textAlign: TextAlign.center,
-      ),
-    );
-  }
-
-  Widget _widgetText2({required String text}) {
-    return Container(
-      margin: const EdgeInsets.only(top: 5),
-      child: Text(
-        text,
-        style: const TextStyle(
-            color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
-        textAlign: TextAlign.center,
+            Expanded(
+              flex: 4,
+              child: _widgetMain(),
+            )
+          ]),
+        ),
       ),
     );
   }
@@ -96,64 +80,41 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
-        child: Column(
-          children: [
-            _widgetText3(text: 'Personal Account Settings'),
-            _widgetDivider(),
-            Column(
-              children: [
-                _input(
-                    text: 'First name',
-                    icon: const Icon(Icons.border_color_outlined)),
-                _input(
-                    text: 'Last Name',
-                    icon: const Icon(Icons.border_color_outlined)),
-                _input(
-                    text: 'Email',
-                    icon: const Icon(Icons.border_color_outlined)),
-                _input(
-                    text: 'Mobie number',
-                    icon: const Icon(Icons.border_color_outlined)),
-              ],
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Personal Account Settings',
+                style: StylesText.mediumBoldText,
+              ),
+              const Divider(),
+              Column(
+                children: [
+                  TextFieldWidget(
+                    textInput: 'First name',
+                    iconRight: SvgPicture.asset('assets/svg/ic_edit.svg'),
+                  ),
+                  const SizedBox(height: 15),
+                  TextFieldWidget(
+                    textInput: 'Last name',
+                    iconRight: SvgPicture.asset('assets/svg/ic_edit.svg'),
+                  ),
+                  const SizedBox(height: 15),
+                  TextFieldWidget(
+                    textInput: 'Email',
+                    iconRight: SvgPicture.asset('assets/svg/ic_edit.svg'),
+                  ),
+                  const SizedBox(height: 15),
+                  TextFieldWidget(
+                    textInput: 'Mobile number',
+                    iconRight: SvgPicture.asset('assets/svg/ic_edit.svg'),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
-      ),
-    );
-  }
-
-  Widget _input({required String text, required Icon icon}) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      child: TextField(
-        obscureText: true,
-        decoration: InputDecoration(
-          hintText: text,
-          suffixIcon: icon,
-        ),
-      ),
-    );
-  }
-
-  Widget _widgetText3({required String text}) {
-    return Container(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
-  Widget _widgetDivider() {
-    return Container(
-      margin: const EdgeInsets.only(top: 10, bottom: 10),
-      child: const Divider(
-        color: Colors.grey,
-        height: 1,
       ),
     );
   }

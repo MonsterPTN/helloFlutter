@@ -125,7 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
               flex: 1,
               child: _widgetHome(
                 title: 'Appraisal',
-                onPressed: _widgetHome,
+                onPressed: () {
+                  print("hi tap 1");
+                },
                 iconButton: SvgPicture.asset('assets/svg/ic_appraisal.svg'),
               ),
             ),
@@ -133,7 +135,9 @@ class _HomeScreenState extends State<HomeScreen> {
               flex: 1,
               child: _widgetHome(
                 title: 'Pricing',
-                onPressed: _widgetHome,
+                onPressed: () {
+                  print("hi tap 2");
+                },
                 iconButton: SvgPicture.asset('assets/svg/ic_pricing.svg'),
               ),
             ),
@@ -149,47 +153,48 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _widgetHome({
     required String title,
     // String? subTitle,
-    required Function onPressed,
+    required Function() onPressed,
     required SvgPicture iconButton,
   }) {
-    return Container(
-      height: 180,
-      margin: const EdgeInsets.only(left: 10, right: 10),
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          iconButton,
-          const SizedBox(
-            height: 12,
-          ),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          MaterialButton(
-            height: 48,
-            onPressed: () {
-              print("Hi");
-            },
-            color: AppColors.primari,
-            child: const Text(
-              "GO",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600),
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        height: 180,
+        margin: const EdgeInsets.only(left: 10, right: 10),
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(
+              height: 20,
             ),
-          ),
-        ],
+            iconButton,
+            const SizedBox(
+              height: 12,
+            ),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              alignment: Alignment.center,
+              height: 48,
+              color: AppColors.primari,
+              child: const Text(
+                "GO",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

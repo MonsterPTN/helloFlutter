@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final String textInput;
   final int? lengMax;
-  final Icon? iconRight;
+  final SvgPicture? iconRight;
   const TextFieldWidget(
       {Key? key, required this.textInput, this.lengMax, this.iconRight})
       : super(key: key);
@@ -13,7 +14,10 @@ class TextFieldWidget extends StatelessWidget {
     return TextField(
       maxLength: lengMax,
       decoration: InputDecoration(
-        prefixIcon: iconRight,
+        suffixIcon: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: iconRight,
+        ),
         hintText: textInput,
         counterText: '',
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/Widget/app_bar_widget.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
 
@@ -73,6 +74,10 @@ class _ListViewScreenState extends State<ListViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppBarWidget(
+        isShowBack: true,
+        title: 'Appraisal list',
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -82,18 +87,6 @@ class _ListViewScreenState extends State<ListViewScreen> {
                 flex: 2,
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 52,
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text("Appraisal list", style: StylesText.styleHeader),
-                      ],
-                    ),
                     const SizedBox(
                       height: 33,
                     ),
