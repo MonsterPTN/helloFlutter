@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/Widget/app_bar_widget.dart';
+import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/switch_widget.dart';
@@ -20,49 +22,49 @@ class _SettingScreenState extends State<SettingScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Scaffold(
-        body: Column(
-          children: [
-            const SizedBox(
-              height: 52,
-            ),
-            _widgetHeader(text: 'Setting'),
-            const SizedBox(
-              height: 30,
-            ),
-            TouchWidget(
-              title: "My profile",
-              onPress: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyProfileScreen()));
-              },
-              icon: SvgPicture.asset('assets/svg/ic_user.svg'),
-              icon2: SvgPicture.asset('assets/svg/ic_arrow_right_red.svg'),
-            ),
-            const SizedBox(
-              height: 16.5,
-            ),
-            TouchWidget(
-                title: "Biometric login",
-                icon: SvgPicture.asset('assets/svg/ic_face_id.svg'),
-                onOff: const SwitchWidget()),
-            const SizedBox(
-              height: 16.5,
-            ),
-            TouchWidget(
-              title: "Change Password",
-              icon: SvgPicture.asset('assets/svg/ic_lock.svg'),
-              icon2: SvgPicture.asset('assets/svg/ic_edit.svg'),
-            ),
-            const SizedBox(
-              height: 16.5,
-            ),
-            TouchWidget(
-              title: "Sign out",
-              icon: SvgPicture.asset('assets/svg/ic_sign_out.svg'),
-            ),
-          ],
+        appBar: const AppBarWidget(title: 'Setting'),
+        body: Container(
+          color: AppColors.backgroundApp,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              TouchWidget(
+                title: "My profile",
+                onPress: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyProfileScreen()));
+                },
+                icon: SvgPicture.asset('assets/svg/ic_user.svg'),
+                icon2: SvgPicture.asset('assets/svg/ic_arrow_right_red.svg'),
+              ),
+              const SizedBox(
+                height: 16.5,
+              ),
+              TouchWidget(
+                  title: "Biometric login",
+                  icon: SvgPicture.asset('assets/svg/ic_face_id.svg'),
+                  onOff: const SwitchWidget()),
+              const SizedBox(
+                height: 16.5,
+              ),
+              TouchWidget(
+                title: "Change Password",
+                icon: SvgPicture.asset('assets/svg/ic_lock.svg'),
+                icon2: SvgPicture.asset('assets/svg/ic_edit.svg'),
+              ),
+              const SizedBox(
+                height: 16.5,
+              ),
+              TouchWidget(
+                title: "Sign out",
+                icon: SvgPicture.asset('assets/svg/ic_sign_out.svg'),
+              ),
+            ],
+          ),
         ),
       ),
     );
