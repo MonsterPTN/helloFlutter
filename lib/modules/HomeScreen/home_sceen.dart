@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/Widget/bottom_modal_widget.dart';
+import 'package:ui/modules/PickerScreen/picker_screen.dart';
+import 'package:ui/modules/PricingScreen/pricing_screen.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:video_player/video_player.dart';
+
+import '../ButtonScreen/button_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -126,7 +131,19 @@ class _HomeScreenState extends State<HomeScreen> {
               child: _widgetHome(
                 title: 'Appraisal',
                 onPressed: () {
-                  print("hi tap 1");
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return BottomModalWidget(
+                          svgPicture:
+                              SvgPicture.asset('assets/svg/ic_warning.svg'),
+                          textHeader: 'Continue appraisal',
+                          text:
+                              'Leaving Recalculating process will leave Price Comparison not updated according to your updated values. Are you sure you want to leave?',
+                          btn1: 'KEEP & COUNTINE',
+                          btn2: 'KEEP OPEN',
+                        );
+                      });
                 },
                 iconButton: SvgPicture.asset('assets/svg/ic_appraisal.svg'),
               ),
@@ -136,7 +153,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: _widgetHome(
                 title: 'Pricing',
                 onPressed: () {
-                  print("hi tap 2");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PricingScreen()),
+                  );
                 },
                 iconButton: SvgPicture.asset('assets/svg/ic_pricing.svg'),
               ),
