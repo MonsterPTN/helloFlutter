@@ -6,6 +6,7 @@ class AppColors {
   static final HexColor primari3 = HexColor('#2868E3');
   static final HexColor primari4 = HexColor('#808080');
   static final HexColor hintText = HexColor('#101010');
+  static final HexColor backgroundApp = HexColor('#FFFFFF');
   static final HexColor textFieldColor = HexColor('#EEEEEE');
 }
 
