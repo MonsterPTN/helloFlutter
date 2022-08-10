@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui/Widget/text_field_widget.dart';
 import 'package:ui/modules/NewAppraisal/new_appraisal.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/modules/PickerScreen/picker_screen.dart';
 
 import 'package:ui/similar_models.dart';
 import 'package:ui/themes/app_colors.dart';
@@ -24,76 +25,79 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _widgetTextSignIn(text: 'Sign In'),
-            const SizedBox(
-              height: 50,
-            ),
-            Row(
-              children: const [
-                Text(
-                  'User ID',
-                  style: StylesText.mediumBoldText,
-                ),
-              ],
-            ),
-            const TextFieldWidget(textInput: 'Your user ID here'),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              children: const [
-                Text(
-                  'Password',
-                  style: StylesText.mediumBoldText,
-                ),
-              ],
-            ),
-            const TextFieldWidget(textInput: 'Your password here'),
-            const SizedBox(
-              height: 30,
-            ),
-            _textForgotPass(text: 'Forgot password'),
-            const SizedBox(
-              height: 40,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: ButtonAdd(
-                    text: 'SIGN IN',
-                    color: AppColors.primari,
-                    onPressed1: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const BottomNavigatorScreen()));
-                    },
+      body: Container(
+        color: AppColors.backgroundApp,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _widgetTextSignIn(text: 'Sign In'),
+              const SizedBox(
+                height: 50,
+              ),
+              Row(
+                children: const [
+                  Text(
+                    'User ID',
+                    style: StylesText.mediumBoldText,
                   ),
-                ),
-                Expanded(
-                    flex: 1,
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        SvgPicture.asset('assets/svg/ic_find_id.svg'),
-                      ],
-                    )),
-              ],
-            ),
-            const SizedBox(
-              height: 26,
-            ),
-            _widgetButonNavigation(),
-          ],
+                ],
+              ),
+              const TextFieldWidget(textInput: 'Your user ID here'),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: const [
+                  Text(
+                    'Password',
+                    style: StylesText.mediumBoldText,
+                  ),
+                ],
+              ),
+              const TextFieldWidget(textInput: 'Your password here'),
+              const SizedBox(
+                height: 30,
+              ),
+              _textForgotPass(text: 'Forgot password'),
+              const SizedBox(
+                height: 40,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 5,
+                    child: ButtonAdd(
+                      text: 'SIGN IN',
+                      color: AppColors.primari,
+                      onPressed1: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const BottomNavigatorScreen()));
+                      },
+                    ),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          SvgPicture.asset('assets/svg/ic_find_id.svg'),
+                        ],
+                      )),
+                ],
+              ),
+              const SizedBox(
+                height: 26,
+              ),
+              _widgetButonNavigation(),
+            ],
+          ),
         ),
       ),
     );
@@ -125,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const DemoWidget()),
+              MaterialPageRoute(builder: (context) => const PickerScreen()),
             );
           },
         ),
