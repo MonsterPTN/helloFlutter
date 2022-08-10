@@ -78,62 +78,65 @@ class _ListViewScreenState extends State<ListViewScreen> {
         isShowBack: true,
         title: 'Appraisal list',
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SingleChildScrollView(
-              child: Expanded(
-                flex: 2,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 33,
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 12, right: 12),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 9,
-                                child: SearchFieldWidget(
-                                  maxLength: 32,
-                                  text: 'Search by free text',
-                                  icon: SvgPicture.asset(
-                                    'assets/svg/ic_search.svg',
-                                    height: 18.3,
-                                    width: 18.3,
+      body: Container(
+        color: AppColors.backgroundApp,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              SingleChildScrollView(
+                child: Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 33,
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 12, right: 12),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 9,
+                                  child: SearchFieldWidget(
+                                    maxLength: 32,
+                                    text: 'Search by free text',
+                                    icon: SvgPicture.asset(
+                                      'assets/svg/ic_search.svg',
+                                      height: 18.3,
+                                      width: 18.3,
+                                    ),
                                   ),
                                 ),
+                                Expanded(
+                                  flex: 1,
+                                  child: SvgPicture.asset(
+                                      'assets/svg/ic_filter.svg'),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _widgetFilter(text: 'Number'),
+                              const SizedBox(
+                                width: 45,
                               ),
-                              Expanded(
-                                flex: 1,
-                                child: SvgPicture.asset(
-                                    'assets/svg/ic_filter.svg'),
-                              ),
+                              _widgetFilter(text: 'Date'),
                             ],
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _widgetFilter(text: 'Number'),
-                            const SizedBox(
-                              width: 45,
-                            ),
-                            _widgetFilter(text: 'Date'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Expanded(flex: 8, child: _widgetMain())
-          ],
+              Expanded(flex: 8, child: _widgetMain())
+            ],
+          ),
         ),
       ),
     );
