@@ -34,15 +34,13 @@ List<Widget> pickerList2 = [
 class _PickerScreenState extends State<PickerScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SizedBox(
+      height: 526,
+      child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const SizedBox(
-                height: 70,
-              ),
               _widgetHeader(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +51,17 @@ class _PickerScreenState extends State<PickerScreen> {
               ),
               _widgetTextInput(),
               const SizedBox(
-                height: 16,
+                height: 20,
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  "Note(options)",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
