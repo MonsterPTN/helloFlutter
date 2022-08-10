@@ -1,385 +1,172 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/Widget/app_bar_widget.dart';
+import 'package:ui/Widget/bottom_modal_widget.dart';
+import 'package:ui/Widget/button_add_widget.dart';
+import 'package:ui/Widget/dropdown_button_widget.dart';
+import 'package:ui/Widget/text_field_widget.dart';
+import 'package:ui/modules/AppraisalScreen/appraisal_screen.dart';
+import 'package:ui/themes/app_colors.dart';
+import 'package:ui/themes/style_text.dart';
 
 class PricingScreen extends StatelessWidget {
   const PricingScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(children: const [
-          Expanded(
-            flex: 1,
-            child: _widgetHeader(),
-          ),
-          Expanded(
-            flex: 9,
-            child: _widgetBody(),
-          )
-        ]),
-      ),
-    );
-  }
-}
-
-class _widgetBody extends StatelessWidget {
-  const _widgetBody({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Brand",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                MyWidget(),
-                Divider(
-                  color: Colors.grey,
-                  height: 2,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "VIN",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Input',
+        appBar: const AppBarWidget(
+          isShowBack: false,
+          title: 'Similar Models',
+        ),
+        body: Container(
+          color: AppColors.backgroundApp,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 33,
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "CS",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Input',
+                  const Text(
+                    'Brand',
+                    style: StylesText.mediumBoldText,
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Plate number",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Input',
+                  const DropDownButtonWidget(
+                    items: [
+                      'Lamboghini',
+                      'Ferari',
+                      'Mescerdes Benz',
+                      'Roll Royce'
+                    ],
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Model",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                DropDownMenu2(),
-                const Divider(
-                  color: Colors.grey,
-                  height: 2,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Year Model",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Input',
+                  const SizedBox(
+                    height: 30,
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Variant",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                DropDownMenu3(),
-                const Divider(
-                  color: Colors.grey,
-                  height: 2,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Color",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                DropDownMenu4(),
-                const Divider(
-                  color: Colors.grey,
-                  height: 2,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Mileage",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: '10,000',
-                    suffix: Text("Km"),
+                  const Text(
+                    'VIN',
+                    style: StylesText.mediumBoldText,
                   ),
-                ),
-              ],
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              MaterialButton(
-                height: 50,
-                onPressed: () {},
-                color: Colors.red,
-                child: const Text(
-                  "SUBMIT",
-                  style: TextStyle(color: Colors.white),
-                ),
+                  const TextFieldWidget(textInput: 'Please enter'),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'CS',
+                    style: StylesText.mediumBoldText,
+                  ),
+                  const TextFieldWidget(textInput: 'Please enter'),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Plate number',
+                    style: StylesText.mediumBoldText,
+                  ),
+                  const TextFieldWidget(textInput: 'Please enter'),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Model',
+                    style: StylesText.mediumBoldText,
+                  ),
+                  const DropDownButtonWidget(
+                    items: [
+                      'Lamboghini',
+                      'Ferari',
+                      'Mescerdes Benz',
+                      'Roll Royce'
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Year model',
+                    style: StylesText.mediumBoldText,
+                  ),
+                  const TextFieldWidget(textInput: 'Please enter'),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Variant',
+                    style: StylesText.mediumBoldText,
+                  ),
+                  const DropDownButtonWidget(
+                    items: [
+                      'Lamboghini',
+                      'Ferari',
+                      'Mescerdes Benz',
+                      'Roll Royce'
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Color',
+                    style: StylesText.mediumBoldText,
+                  ),
+                  const DropDownButtonWidget(
+                    items: [
+                      'Lamboghini',
+                      'Ferari',
+                      'Mescerdes Benz',
+                      'Roll Royce'
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Mileage',
+                    style: StylesText.mediumBoldText,
+                  ),
+                  const TextFieldWidget(
+                    textInput: 'Please enter',
+                    textRight: 'km',
+                  ),
+                  const SizedBox(
+                    height: 35,
+                  ),
+                  ButtonAdd(
+                    onPressed1: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return BottomModalWidget(
+                              svgPicture:
+                                  SvgPicture.asset('assets/svg/ic_warning.svg'),
+                              textHeader: 'CANCEL PROCESS',
+                              text:
+                                  'You have unsaved content. By leaving the screen, it will be discarded. Are you sure you want to proceed?',
+                              btn1: 'KEEP & COUNTINE',
+                              btn2: 'DISCARD & LEAVE',
+                              onPressbtn1: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const AppraisalScreen()),
+                                );
+                              },
+                            );
+                          });
+                    },
+                    text: 'SUBMIT',
+                    color: AppColors.primari,
+                    colorText: AppColors.backgroundApp,
+                  ),
+                  const SizedBox(
+                    height: 35,
+                  )
+                ],
               ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class DropDownMenu2 extends StatefulWidget {
-  @override
-  State<DropDownMenu2> createState() => _DropDownMenu2State();
-}
-
-class _DropDownMenu2State extends State<DropDownMenu2> {
-  final items2 = [
-    'Toyota',
-    'Cammry',
-    'BenZ',
-    'Avendator',
-  ];
-  String? value2;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: DropdownButton<String>(
-          isExpanded: true,
-          hint: const Text("Fortuner"),
-          icon: const Icon(Icons.keyboard_arrow_down),
-          value: value2,
-          items: items2.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() => value2 = value)),
-    );
-  }
-
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-        ),
-      );
-}
-
-class DropDownMenu3 extends StatefulWidget {
-  @override
-  State<DropDownMenu3> createState() => _DropDownMenu3State();
-}
-
-class _DropDownMenu3State extends State<DropDownMenu3> {
-  final items3 = [
-    'Fortuner 4x4 Diiesel AT',
-    'Fortuner 4x4 Diiesel AT',
-    'Fortuner 4x4 Diiesel AT',
-    'Fortuner 4x4 Diiesel AT',
-  ];
-  String? value3;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: DropdownButton<String>(
-          isExpanded: true,
-          hint: const Text("Fortuner"),
-          icon: const Icon(Icons.keyboard_arrow_down),
-          value: value3,
-          items: items3.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() => value3 = value)),
-    );
-  }
-
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-        ),
-      );
-}
-
-class DropDownMenu4 extends StatefulWidget {
-  @override
-  State<DropDownMenu4> createState() => _DropDownMenu4State();
-}
-
-class _DropDownMenu4State extends State<DropDownMenu4> {
-  final items4 = [
-    'Black',
-    'Red',
-    'White',
-    'Yello',
-  ];
-  String? value4;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: DropdownButton<String>(
-          isExpanded: true,
-          hint: const Text("Fortuner"),
-          icon: const Icon(Icons.keyboard_arrow_down),
-          value: value4,
-          items: items4.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() => value4 = value)),
-    );
-  }
-
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-        ),
-      );
-}
-
-class MyWidget extends StatefulWidget {
-  const MyWidget({Key? key}) : super(key: key);
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  final items = [
-    'Toyota',
-    'Lamboghini',
-    'Vinfas',
-    'Yamaha',
-  ];
-  String? value;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: DropdownButton<String>(
-          isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down),
-          hint: const Text("Toyota"),
-          value: value,
-          items: items.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() => this.value = value)),
-    );
-  }
-
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-        ),
-      );
-}
-
-class _widgetHeader extends StatelessWidget {
-  const _widgetHeader({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      const Icon(
-        Icons.chevron_left,
-        size: 24,
-      ),
-      const Text(
-        "Similar Models",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-      ),
-      Container(
-        width: 24,
-      ),
-    ]);
+            ),
+          ),
+        ));
   }
 }
