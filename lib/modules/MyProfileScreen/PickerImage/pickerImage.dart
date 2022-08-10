@@ -43,7 +43,13 @@ class _PickImageState extends State<PickImage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              SvgPicture.asset('assets/svg/ic_close.svg'),
+                              InkWell(
+                                child:
+                                    SvgPicture.asset('assets/svg/ic_close.svg'),
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
                               const SizedBox(
                                 width: 20.75,
                               ),
