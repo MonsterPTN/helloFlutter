@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui/themes/app_colors.dart';
+import 'package:ui/themes/style_text.dart';
 import '../../Widget/button_add_widget.dart';
 import '../PickerScreen/picker_screen.dart';
 import '../models/class.dart';
@@ -45,47 +48,63 @@ class _DemoWidgetState extends State<DemoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: _widgetHeader(),
-          ),
-          Expanded(
-            flex: 1,
-            child: _widgetTextHome(
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Container(
+        height: 672,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 25.75,
+            ),
+            _widgetHeader(),
+            const SizedBox(
+              height: 44.75,
+            ),
+            _widgetTextHome(
                 text: 'Standard of engine, systems & function',
                 text2: 'C',
                 text3: 'Sum Total',
                 text4: 'Max'),
-          ),
-          Expanded(
-            flex: 4,
-            child: _widgetListButton(),
-          ),
-          Expanded(
-            flex: 1,
-            child: ButtonAdd(
+            const SizedBox(
+              height: 12,
+            ),
+            _widgetListButton(),
+            const SizedBox(
+              height: 50,
+            ),
+            ButtonAdd(
               text: "ADD",
+              colorText: AppColors.backgroundApp,
+              color: AppColors.primari,
               onPressed1: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PickerScreen()));
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return PickerScreen();
+                    });
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   Widget _widgetHeader() {
-    return Container(
-      padding: const EdgeInsets.only(top: 20),
-      alignment: Alignment.topRight,
-      child: const Icon(Icons.close),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        InkWell(
+          child: SvgPicture.asset('assets/svg/ic_close.svg'),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        const SizedBox(
+          width: 20.75,
+        )
+      ],
     );
   }
 
@@ -102,80 +121,81 @@ class _DemoWidgetState extends State<DemoWidget> {
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           textAlign: TextAlign.center,
         ),
-        Container(
-          margin: const EdgeInsets.only(top: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Center(
-                  child: Text(
-                    text2,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
+        const SizedBox(
+          height: 25,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  text2,
+                  style: StylesText.styleText3,
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Center(
-                  child: Text(
-                    text3,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  text3,
+                  style: StylesText.styleText3,
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Center(
-                  child: Text(
-                    text4,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  text4,
+                  style: StylesText.styleText3,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
   }
 
   Widget _widgetListButton() {
-    return GridView.count(
-      mainAxisSpacing: 4,
-      crossAxisCount: 3,
-      crossAxisSpacing: 4,
-      childAspectRatio: 2,
-      children: [
-        for (int i = 0; i < _toggles.value.length; i++)
-          SizedBox(
-            child: ValueListenableBuilder<List<Class>>(
-              valueListenable: _toggles,
-              builder: (_, toggles, __) => SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: MaterialButton(
-                  height: 50,
-                  onPressed: () {
-                    _toggles.value[i].id = !toggles[i].id;
-                    _toggles.notifyListeners();
-                  },
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      color:
-                          toggles[i].id == true ? Colors.black : Colors.white,
+    return Container(
+      color: AppColors.backgroundApp,
+      height: 278,
+      child: GridView.count(
+        mainAxisSpacing: 4,
+        crossAxisCount: 3,
+        childAspectRatio: 2.3,
+        children: [
+          for (int i = 0; i < _toggles.value.length; i++)
+            Container(
+              margin: const EdgeInsets.only(top: 4, bottom: 4),
+              child: ValueListenableBuilder<List<Class>>(
+                valueListenable: _toggles,
+                builder: (_, toggles, __) => SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: MaterialButton(
+                    height: 46,
+                    onPressed: () {
+                      _toggles.value[i].id = !toggles[i].id;
+                      _toggles.notifyListeners();
+                    },
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color:
+                            toggles[i].id == true ? Colors.black : Colors.white,
+                      ),
                     ),
+                    child: Text(toggles[i].nameCar),
                   ),
-                  child: Text(toggles[i].nameCar),
                 ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 
