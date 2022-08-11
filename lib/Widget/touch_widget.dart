@@ -36,19 +36,26 @@ class TouchWidget extends StatelessWidget {
                   children: [
                     icon,
                     Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          title,
-                          style: StylesText.medium16Text,
-                        )),
+                      margin: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        title,
+                        style: StylesText.medium16Text,
+                      ),
+                    ),
                   ],
                 ),
                 Container(
-                  child: icon2 ?? Transform.scale(scale: 0.6, child: onOff),
+                  child: icon2 ??
+                      Transform.scale(
+                        scale: 0.6,
+                        child: onOff,
+                      ),
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(
+              height: 15,
+            ),
             const Divider(
               color: Colors.grey,
               height: 1,
