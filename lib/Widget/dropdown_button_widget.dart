@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/Widget/divider.dart';
 
 class DropDownButtonWidget extends StatefulWidget {
@@ -15,34 +16,31 @@ class _DropDownButtonWidgetState extends State<DropDownButtonWidget> {
   String? dropdownValue;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20),
-      padding: EdgeInsets.all(8),
-      child: Column(
-        children: [
-          DropdownButton<String>(
-            isExpanded: true,
-            value: dropdownValue ?? widget.items.first,
-            icon: const Icon(Icons.keyboard_arrow_down),
-            iconSize: 42,
-            underline: SizedBox(),
-            onChanged: (newValue) {
-              setState(() {
-                dropdownValue = newValue;
-              });
-            },
-            items: widget.items.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(
-                  value,
-                ),
-              );
-            }).toList(),
-          ),
-          const DeviderWidget()
-        ],
-      ),
+    return Column(
+      children: [
+        DropdownButton<String>(
+          isExpanded: true,
+          hint: const Text("Please enter"),
+          value: dropdownValue,
+          icon: SvgPicture.asset('assets/svg/ic_arrow_bottom_16.svg'),
+          iconSize: 42,
+          underline: SizedBox(),
+          onChanged: (newValue) {
+            setState(() {
+              dropdownValue = newValue;
+            });
+          },
+          items: widget.items.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(
+                value,
+              ),
+            );
+          }).toList(),
+        ),
+        const DeviderWidget()
+      ],
     );
   }
 }
