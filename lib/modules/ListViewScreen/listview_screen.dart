@@ -81,60 +81,40 @@ class _ListViewScreenState extends State<ListViewScreen> {
       body: Container(
         color: AppColors.backgroundApp,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+          ),
           child: Column(
             children: [
               SingleChildScrollView(
-                child: Expanded(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 33,
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(left: 12, right: 12),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 9,
-                                  child: SearchFieldWidget(
-                                    maxLength: 32,
-                                    text: 'Search by free text',
-                                    icon: SvgPicture.asset(
-                                      'assets/svg/ic_search.svg',
-                                      height: 18.3,
-                                      width: 18.3,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: SvgPicture.asset(
-                                      'assets/svg/ic_filter.svg'),
-                                ),
-                              ],
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 33,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SearchFieldWidget(
+                            maxLength: 32,
+                            text: 'Search by free text',
+                            icon: SvgPicture.asset(
+                              'assets/svg/ic_search.svg',
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              _widgetFilter(text: 'Number'),
-                              const SizedBox(
-                                width: 45,
-                              ),
-                              _widgetFilter(text: 'Date'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        SvgPicture.asset('assets/svg/ic_filter.svg'),
+                      ],
+                    ),
+                    _widgetFilterBody(),
+                  ],
                 ),
               ),
-              Expanded(flex: 8, child: _widgetMain())
+              Expanded(child: _widgetMain())
             ],
           ),
         ),
@@ -142,12 +122,28 @@ class _ListViewScreenState extends State<ListViewScreen> {
     );
   }
 
-  Widget _widgetFilter({required String text}) {
+  Widget _widgetFilterBody() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _widgetFilterFormat('Number'),
+        const SizedBox(
+          width: 45,
+        ),
+        _widgetFilterFormat('Date'),
+      ],
+    );
+  }
+
+  Widget _widgetFilterFormat(String text) {
     return SizedBox(
       height: 42,
       child: Row(
         children: [
-          Text(text),
+          Text(
+            text,
+            style: StylesText.mediumBoldText1,
+          ),
           const SizedBox(
             width: 6,
           ),
@@ -168,174 +164,181 @@ class _ListViewScreenState extends State<ListViewScreen> {
       itemCount: stations.length,
       itemBuilder: (context, index) {
         final item = stations[index];
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
-          child: Column(
-            children: [
-              const DeviderWidget(),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "TMA-TO-000000003",
-                    style: StylesText.mediumBoldText,
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.error,
-                          color: item.status == 'Open'
-                              ? AppColors.primari3
-                              : item.status == 'Sucessful'
-                                  ? AppColors.primari2
-                                  : item.status == 'Unsuccessful'
-                                      ? AppColors.primari
-                                      : AppColors.primari4),
-                      const SizedBox(
-                        width: 7.5,
-                      ),
-                      Text(item.status,
-                          style: item.status == 'Open'
-                              ? TextStyle(
-                                  color: AppColors.primari3,
-                                  fontWeight: FontWeight.bold)
-                              : item.status == 'Sucessful'
-                                  ? TextStyle(
-                                      color: AppColors.primari2,
-                                      fontWeight: FontWeight.bold)
-                                  : item.status == 'Unsuccessful'
-                                      ? TextStyle(
-                                          color: AppColors.primari,
-                                          fontWeight: FontWeight.bold)
-                                      : TextStyle(
-                                          color: AppColors.primari4,
-                                          fontWeight: FontWeight.bold)),
-                      const SizedBox(
-                        width: 14.5,
-                      ),
-                      SvgPicture.asset('assets/svg/ic_arrow_right.svg'),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Classification",
-                    style: StylesText.mediumBoldText,
-                  ),
-                  Text(
-                    item.classification,
-                    style: StylesText.mediumBoldText,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Price",
-                    style: StylesText.mediumBoldText,
-                  ),
-                  Text(
-                    item.price,
-                    style: StylesText.medium16Text,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Assessor",
-                    style: StylesText.mediumBoldText,
-                  ),
-                  Text(
-                    item.assessor,
-                    style: StylesText.medium16Text,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Customer",
-                    style: StylesText.mediumBoldText,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        item.classification,
-                        style: StylesText.medium16Text,
-                      ),
-                      Text(
-                        item.numberPhoneCustomer,
-                        style: StylesText.medium16Text,
-                      )
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 13,
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        return Column(
+          children: [
+            const DeviderWidget(),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "TMA-TO-000000003",
+                  style: StylesText.mediumBoldText,
+                ),
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        const Text("Vehicle details",
-                            style: StylesText.mediumBoldText),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        SvgPicture.asset('assets/svg/ic_arrow_bottom_16.svg')
-                      ],
+                    Icon(
+                      Icons.error,
+                      color: item.status == 'Open'
+                          ? AppColors.primari3
+                          : item.status == 'Sucessful'
+                              ? AppColors.primari2
+                              : item.status == 'Unsuccessful'
+                                  ? AppColors.primari
+                                  : AppColors.primari4,
                     ),
                     const SizedBox(
-                      height: 10,
+                      width: 7.5,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          item.vehicleDetailStart,
-                          style: StylesText.medium14Text,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          item.vehicleDetailEnd,
-                          style: StylesText.medium14Text,
-                        ),
-                      ],
+                    Text(
+                      item.status,
+                      style: item.status == 'Open'
+                          ? TextStyle(
+                              color: AppColors.primari3,
+                              fontWeight: FontWeight.bold,
+                            )
+                          : item.status == 'Sucessful'
+                              ? TextStyle(
+                                  color: AppColors.primari2,
+                                  fontWeight: FontWeight.bold,
+                                )
+                              : item.status == 'Unsuccessful'
+                                  ? TextStyle(
+                                      color: AppColors.primari,
+                                      fontWeight: FontWeight.bold,
+                                    )
+                                  : TextStyle(
+                                      color: AppColors.primari4,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                     ),
+                    const SizedBox(
+                      width: 14.5,
+                    ),
+                    SvgPicture.asset('assets/svg/ic_arrow_right.svg'),
                   ],
                 ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Classification",
+                  style: StylesText.mediumBoldText,
+                ),
+                Text(
+                  item.classification,
+                  style: StylesText.mediumBoldText,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Price",
+                  style: StylesText.mediumBoldText,
+                ),
+                Text(
+                  item.price,
+                  style: StylesText.medium16Text,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Assessor",
+                  style: StylesText.mediumBoldText,
+                ),
+                Text(
+                  item.assessor,
+                  style: StylesText.medium16Text,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Customer",
+                  style: StylesText.mediumBoldText,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      item.classification,
+                      style: StylesText.medium16Text,
+                    ),
+                    Text(
+                      item.numberPhoneCustomer,
+                      style: StylesText.medium16Text,
+                    )
+                  ],
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 13,
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        "Vehicle details",
+                        style: StylesText.mediumBoldText,
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      SvgPicture.asset('assets/svg/ic_arrow_bottom_16.svg')
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.vehicleDetailStart,
+                        style: StylesText.medium14Text,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        item.vehicleDetailEnd,
+                        style: StylesText.medium14Text,
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );
