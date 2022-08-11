@@ -51,9 +51,19 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                 padding: const EdgeInsets.all(15.0),
                 child: SvgPicture.asset('assets/svg/ic_arrow_left.svg'),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
             )
-          : const SizedBox(),
+          : InkWell(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: SvgPicture.asset('assets/svg/ic_arrow_left_black.svg'),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
       actions: [
         widget.isShowMainAction
             ? InkWell(
