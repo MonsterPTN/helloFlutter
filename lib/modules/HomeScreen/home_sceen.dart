@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/Widget/bottom_modal_widget.dart';
-import 'package:ui/modules/PickerScreen/picker_screen.dart';
 import 'package:ui/modules/PricingScreen/pricing_screen.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:video_player/video_player.dart';
-
-import '../ButtonScreen/button_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -65,9 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Expanded(
                             flex: 2,
-                            child: _widgetRightHeader(
-                              url:
-                                  'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg',
+                            child: _widgetImageUrl(
+                              'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg',
                             ),
                           ),
                         ],
@@ -88,13 +84,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return Text(
       text,
       style: const TextStyle(
-          fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
+        fontSize: 28,
+        color: Colors.white,
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 
-  Widget _widgetRightHeader({
-    required String url,
-  }) {
+  Widget _widgetImageUrl(
+    String url,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -156,7 +155,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const PricingScreen()),
+                      builder: (context) => const PricingScreen(),
+                    ),
                   );
                 },
                 iconButton: SvgPicture.asset('assets/svg/ic_pricing.svg'),
@@ -173,7 +173,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _widgetHome({
     required String title,
-    // String? subTitle,
     required Function() onPressed,
     required SvgPicture iconButton,
   }) {
@@ -197,7 +196,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 24,
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -209,9 +211,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: const Text(
                 "GO",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],
