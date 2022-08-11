@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/Widget/divider.dart';
 
@@ -24,7 +22,7 @@ class _DropDownButtonWidgetState extends State<DropDownButtonWidget> {
           value: dropdownValue,
           icon: SvgPicture.asset('assets/svg/ic_arrow_bottom_16.svg'),
           iconSize: 42,
-          underline: SizedBox(),
+          underline: const SizedBox(),
           onChanged: (newValue) {
             setState(() {
               dropdownValue = newValue;
