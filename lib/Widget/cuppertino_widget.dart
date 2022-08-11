@@ -8,11 +8,11 @@ class CupertinoScollPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
-      width: 100,
+      height: 100,
+      width: MediaQuery.of(context).size.width / 3,
       alignment: Alignment.center,
       child: CupertinoPicker(
-        itemExtent: 50,
+        itemExtent: 34,
         children: text,
         onSelectedItemChanged: (int i) {
           print(i);
