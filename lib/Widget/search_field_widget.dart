@@ -14,21 +14,19 @@ class SearchFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.textFieldColor,
+      padding: const EdgeInsets.only(left: 12),
       height: 47,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 12.0),
-        child: TextFormField(
-          maxLength: maxLength,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            labelText: text,
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-            labelStyle: TextStyle(color: AppColors.hintText),
-            counterText: '',
-            suffixIcon: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: icon,
-            ),
+      child: TextFormField(
+        maxLength: maxLength,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          labelText: text,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          labelStyle: TextStyle(color: AppColors.hintText),
+          counterText: '',
+          suffixIcon: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: icon,
           ),
         ),
       ),
