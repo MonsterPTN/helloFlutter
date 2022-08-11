@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ui/themes/style_text.dart';
 
-class ButtonAdd extends StatelessWidget {
+class PrimariButton extends StatelessWidget {
   final String text;
   final Color? color;
   final Color? colorText;
   final Function() onPressed1;
-  const ButtonAdd({
+  const PrimariButton({
     Key? key,
     required this.onPressed1,
     required this.text,
@@ -16,19 +16,18 @@ class ButtonAdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: InkWell(
-        onTap: onPressed1,
-        child: Container(
-          color: color ?? Colors.black,
-          alignment: Alignment.center,
-          height: 48,
-          width: MediaQuery.of(context).size.width,
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: StylesText.medium14Text
-                .copyWith(color: colorText ?? Colors.black),
+    return InkWell(
+      onTap: onPressed1,
+      child: Container(
+        color: color ?? Colors.black,
+        alignment: Alignment.center,
+        height: 48,
+        width: MediaQuery.of(context).size.width,
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: StylesText.medium14Text.copyWith(
+            color: colorText ?? Colors.black,
           ),
         ),
       ),
