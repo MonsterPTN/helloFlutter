@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class SwitchWidget extends StatefulWidget {
@@ -16,9 +15,11 @@ class _SwitchWidgetState extends State<SwitchWidget> {
       child: CupertinoSwitch(
         value: _switchValue,
         onChanged: (value) {
-          setState(() {
-            _switchValue = value;
-          });
+          setState(
+            () {
+              _switchValue = value;
+            },
+          );
         },
       ),
     );
