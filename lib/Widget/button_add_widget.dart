@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ui/themes/style_text.dart';
 
 class ButtonAdd extends StatelessWidget {
   final String text;
   final Color? color;
+  final Color? colorText;
   final Function() onPressed1;
   const ButtonAdd({
     Key? key,
     required this.onPressed1,
     required this.text,
     this.color,
+    this.colorText,
   }) : super(key: key);
 
   @override
@@ -24,7 +27,8 @@ class ButtonAdd extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white, fontSize: 14),
+            style: StylesText.medium14Text
+                .copyWith(color: colorText ?? Colors.black),
           ),
         ),
       ),
