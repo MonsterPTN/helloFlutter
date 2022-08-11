@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PickerImageWidget extends StatefulWidget {
@@ -21,24 +23,25 @@ class _PickerImageWidgetState extends State<PickerImageWidget> {
         getSingleImage();
       },
       child: singleImage == null
-          ? Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, border: Border.all(color: Colors.grey)),
-              width: 100,
-              height: 100,
-              child: const Icon(
-                CupertinoIcons.camera,
-                color: Colors.grey,
-              ),
+          ? DottedBorder(
+              color: Colors.grey,
+              child: SizedBox(
+                  width: 108,
+                  height: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.all(35.0),
+                    child: SvgPicture.asset('assets/svg/ic_add.svg'),
+                  )),
             )
-          : Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, border: Border.all(color: Colors.grey)),
-              width: 100,
-              height: 100,
-              child: Image.file(
-                singleImage!,
-                fit: BoxFit.cover,
+          : DottedBorder(
+              color: Colors.grey,
+              child: SizedBox(
+                width: 108,
+                height: 108,
+                child: Image.file(
+                  singleImage!,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
     );
