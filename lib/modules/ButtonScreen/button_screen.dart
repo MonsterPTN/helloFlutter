@@ -50,7 +50,7 @@ class _DemoWidgetState extends State<DemoWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
-      child: Container(
+      child: SizedBox(
         height: 672,
         child: Column(
           children: [
@@ -73,7 +73,7 @@ class _DemoWidgetState extends State<DemoWidget> {
             const SizedBox(
               height: 50,
             ),
-            ButtonAdd(
+            PrimariButton(
               text: "ADD",
               colorText: AppColors.backgroundApp,
               color: AppColors.primari,
@@ -81,7 +81,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
-                      return PickerScreen();
+                      return const PickerScreen();
                     });
               },
             ),
@@ -118,7 +118,10 @@ class _DemoWidgetState extends State<DemoWidget> {
       children: [
         Text(
           text,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(
@@ -172,7 +175,10 @@ class _DemoWidgetState extends State<DemoWidget> {
         children: [
           for (int i = 0; i < _toggles.value.length; i++)
             Container(
-              margin: const EdgeInsets.only(top: 4, bottom: 4),
+              margin: const EdgeInsets.only(
+                top: 4,
+                bottom: 4,
+              ),
               child: ValueListenableBuilder<List<Class>>(
                 valueListenable: _toggles,
                 builder: (_, toggles, __) => SizedBox(
@@ -198,6 +204,4 @@ class _DemoWidgetState extends State<DemoWidget> {
       ),
     );
   }
-
-  void calculator() {}
 }
