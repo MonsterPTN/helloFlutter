@@ -21,10 +21,14 @@ class TextFieldPrefix extends StatelessWidget {
       decoration: InputDecoration(
         counterText: '',
         hintText: textHint,
-        prefixIconConstraints:
-            const BoxConstraints(minWidth: 23, maxHeight: 20),
-        prefixIcon:
-            Padding(padding: const EdgeInsets.only(right: 20), child: icon),
+        prefixIconConstraints: const BoxConstraints(
+          minWidth: 23,
+          maxHeight: 20,
+        ),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: icon,
+        ),
       ),
     );
   }
