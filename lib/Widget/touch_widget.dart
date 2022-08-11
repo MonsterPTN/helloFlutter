@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
 
 class TouchWidget extends StatelessWidget {
@@ -20,6 +21,7 @@ class TouchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: AppColors.backgroundApp,
       padding: const EdgeInsets.all(5),
       alignment: Alignment.center,
       child: InkWell(
