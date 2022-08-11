@@ -38,18 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
               child: FittedBox(
                 fit: BoxFit.cover,
                 child: SizedBox(
-                  width: _controller.value.size?.width ?? 0,
-                  height: _controller.value.size?.height ?? 0,
+                  width: _controller.value.size.width,
+                  height: _controller.value.size.height,
                   child: VideoPlayer(_controller),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
                         height: 76,
@@ -57,20 +58,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         children: [
                           Expanded(
-                            flex: 3,
                             child: _widgetLeftHeader(text: 'Hello, Adam Smith'),
                           ),
-                          Expanded(
-                            flex: 2,
-                            child: _widgetImageUrl(
-                              'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg',
-                            ),
+                          _widgetImageUrl(
+                            'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg',
                           ),
                         ],
                       ),
                     ],
                   ),
-                  _widgetBodyButton()
+                  Column(
+                    children: [
+                      _widgetBodyButton(),
+                      const SizedBox(
+                        height: 70,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -94,79 +98,63 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _widgetImageUrl(
     String url,
   ) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(left: 12),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                url,
-              ),
-            ),
-            borderRadius: BorderRadius.circular(50),
-            color: Colors.white,
-            border: Border.all(
-              color: Colors.grey,
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(
+            url,
           ),
-          height: 48,
-          width: 48,
-        )
-      ],
+        ),
+        borderRadius: BorderRadius.circular(50),
+        color: Colors.white,
+        border: Border.all(
+          color: Colors.grey,
+        ),
+      ),
+      height: 50,
+      width: 50,
     );
   }
 
   Widget _widgetBodyButton() {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 1,
-              child: _widgetHome(
-                title: 'Appraisal',
-                onPressed: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return BottomModalWidget(
-                          svgPicture:
-                              SvgPicture.asset('assets/svg/ic_warning.svg'),
-                          textHeader: 'Continue appraisal',
-                          text:
-                              'Leaving Recalculating process will leave Price Comparison not updated according to your updated values. Are you sure you want to leave?',
-                          btn1: 'KEEP & COUNTINE',
-                          btn2: 'KEEP OPEN',
-                        );
-                      });
-                },
-                iconButton: SvgPicture.asset('assets/svg/ic_appraisal.svg'),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: _widgetHome(
-                title: 'Pricing',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PricingScreen(),
-                    ),
-                  );
-                },
-                iconButton: SvgPicture.asset('assets/svg/ic_pricing.svg'),
-              ),
-            ),
-          ],
+        Expanded(
+          child: _widgetHome(
+            title: 'Appraisal',
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return BottomModalWidget(
+                      svgPicture: SvgPicture.asset('assets/svg/ic_warning.svg'),
+                      textHeader: 'Continue appraisal',
+                      text:
+                          'Leaving Recalculating process will leave Price Comparison not updated according to your updated values. Are you sure you want to leave?',
+                      btn1: 'KEEP & COUNTINE',
+                      btn2: 'KEEP OPEN',
+                    );
+                  });
+            },
+            iconButton: SvgPicture.asset('assets/svg/ic_appraisal.svg'),
+          ),
         ),
-        const SizedBox(
-          height: 71,
-        )
+        Expanded(
+          child: _widgetHome(
+            title: 'Pricing',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PricingScreen(),
+                ),
+              );
+            },
+            iconButton: SvgPicture.asset('assets/svg/ic_pricing.svg'),
+          ),
+        ),
       ],
     );
   }
