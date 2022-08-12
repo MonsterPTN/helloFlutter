@@ -69,7 +69,7 @@ class BottomModalWidget extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            ButtonAdd(
+            PrimariButton(
               onPressed1: onPressbtn1 ?? () {},
               text: btn1,
               color: AppColors.primari,
