@@ -130,7 +130,7 @@ class _NewAppraisalScreenState extends State<NewAppraisalScreen> {
                 ),
               ),
               Expanded(
-                child: ButtonAdd(
+                child: PrimariButton(
                   text: "NEXT",
                   color: Colors.red,
                   onPressed1: () {},
