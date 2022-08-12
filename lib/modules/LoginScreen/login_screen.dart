@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 children: [
                   Expanded(
-                    child: ButtonAdd(
+                    child: PrimariButton(
                       text: 'SIGN IN',
                       color: AppColors.primari,
                       colorText: AppColors.backgroundApp,
