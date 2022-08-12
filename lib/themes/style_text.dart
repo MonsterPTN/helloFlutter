@@ -22,6 +22,10 @@ class StylesText {
     fontWeight: FontWeight.w600,
     fontSize: 18,
   );
+  static const styleText4 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 17,
+  );
   static const mediumBoldText1 = TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 16,

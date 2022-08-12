@@ -7,7 +7,9 @@ class AppColors {
   static final HexColor primari4 = HexColor('#808080');
   static final HexColor hintText = HexColor('#101010');
   static final HexColor backgroundApp = HexColor('#FFFFFF');
+  static final HexColor backgroundApp2 = HexColor('#F5F5F5');
   static final HexColor textFieldColor = HexColor('#EEEEEE');
+  static final HexColor bttomColor = HexColor('#3A3A3A');
 }
 
 class HexColor extends Color {
