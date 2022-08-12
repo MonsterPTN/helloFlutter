@@ -7,6 +7,7 @@ import 'package:ui/Widget/text_field_widget.dart';
 
 import '../../Widget/cuppertino_widget.dart';
 import '../../Widget/picker_image.dart';
+import '../../themes/app_colors.dart';
 import '../ListViewScreen/listview_screen.dart';
 
 class PickerScreen extends StatefulWidget {
@@ -94,10 +95,12 @@ class _PickerScreenState extends State<PickerScreen> {
                 MaterialPageRoute(
                     builder: (context) => const ListViewScreen()));
           },
-          child: const Text(
+          child: Text(
             "Add",
             style: TextStyle(
-                fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                fontSize: 18,
+                color: AppColors.black,
+                fontWeight: FontWeight.bold),
           ),
         )
       ],

@@ -191,8 +191,9 @@ class _DemoWidgetState extends State<DemoWidget> {
                     },
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
-                        color:
-                            toggles[i].id == true ? Colors.black : Colors.white,
+                        color: toggles[i].id == true
+                            ? AppColors.black
+                            : Colors.white,
                       ),
                     ),
                     child: Text(toggles[i].nameCar),

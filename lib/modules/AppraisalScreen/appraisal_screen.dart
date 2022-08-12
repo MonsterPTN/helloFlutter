@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/Widget/app_bar_widget.dart';
-import 'package:ui/Widget/button_add_widget.dart';
 import 'package:ui/Widget/second_button_widget.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
@@ -20,10 +19,34 @@ class AppraisalScreen extends StatefulWidget {
 class _AppraisalScreenState extends State<AppraisalScreen>
     with TickerProviderStateMixin {
   List<Station> stations = [
-    Station(1, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
-    Station(2, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
-    Station(3, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
-    Station(4, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
+    Station(
+      1,
+      "2022 Toyota Fortuner",
+      "1,200km",
+      "810,000",
+      "31 Aug 2022",
+    ),
+    Station(
+      2,
+      "2022 Toyota Fortuner",
+      "1,200km",
+      "810,000",
+      "31 Aug 2022",
+    ),
+    Station(
+      3,
+      "2022 Toyota Fortuner",
+      "1,200km",
+      "810,000",
+      "31 Aug 2022",
+    ),
+    Station(
+      4,
+      "2022 Toyota Fortuner",
+      "1,200km",
+      "810,000",
+      "31 Aug 2022",
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -130,8 +153,8 @@ class _AppraisalScreenState extends State<AppraisalScreen>
                         children: [
                           Text(
                             item.nameCar,
-                            style: const TextStyle(
-                              color: Colors.black,
+                            style: TextStyle(
+                              color: AppColors.black,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -177,16 +200,16 @@ class _AppraisalScreenState extends State<AppraisalScreen>
   }
 
   Widget _widgetTabBarView(BuildContext context) {
-    TabController _tabController = TabController(
+    TabController tabController = TabController(
       length: 2,
       vsync: this,
     );
     return Column(
       children: [
         TabBar(
-          controller: _tabController,
-          labelColor: Colors.black,
-          indicatorColor: Colors.black,
+          controller: tabController,
+          labelColor: AppColors.black,
+          indicatorColor: AppColors.black,
           indicatorWeight: 2,
           tabs: [
             Tab(
@@ -208,7 +231,7 @@ class _AppraisalScreenState extends State<AppraisalScreen>
           height: 629,
           child: Expanded(
             child: TabBarView(
-              controller: _tabController,
+              controller: tabController,
               children: const [
                 Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),

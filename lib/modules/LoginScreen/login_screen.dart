@@ -100,8 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
       alignment: Alignment.topLeft,
       child: Text(
         text,
-        style: const TextStyle(
-          color: Colors.black,
+        style: TextStyle(
+          color: AppColors.black,
           decoration: TextDecoration.underline,
         ),
       ),

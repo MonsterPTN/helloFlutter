@@ -72,12 +72,13 @@ class _BodyBarState extends State<BodyBar> {
         height: 60,
         decoration: index == _currentIndex
             ? BoxDecoration(
-                color: Colors.black,
+                color: AppColors.black,
                 border:
                     Border(top: BorderSide(color: AppColors.primari, width: 3)))
-            : const BoxDecoration(
-                color: Colors.black,
-                border: Border(top: BorderSide(color: Colors.black, width: 3))),
+            : BoxDecoration(
+                color: AppColors.black,
+                border:
+                    Border(top: BorderSide(color: AppColors.black, width: 3))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

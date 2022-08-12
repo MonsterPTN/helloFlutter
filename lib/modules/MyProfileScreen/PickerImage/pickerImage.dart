@@ -97,15 +97,15 @@ class _PickImageState extends State<PickImage> {
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   border: Border.all(
-                                      color: Colors.black, width: 2)),
+                                      color: AppColors.black, width: 2)),
                               alignment: Alignment.center,
                               height: 48,
                               width: MediaQuery.of(context).size.width,
-                              child: const Text(
+                              child: Text(
                                 'CHOOSE OF BIBRALY',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 14),
+                                    color: AppColors.black, fontSize: 14),
                               ),
                             ),
                           ),

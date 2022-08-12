@@ -10,6 +10,7 @@ class AppColors {
   static final HexColor backgroundApp2 = HexColor('#F5F5F5');
   static final HexColor textFieldColor = HexColor('#EEEEEE');
   static final HexColor bttomColor = HexColor('#3A3A3A');
+  static final HexColor black = HexColor('#000000');
 }
 
 class HexColor extends Color {
