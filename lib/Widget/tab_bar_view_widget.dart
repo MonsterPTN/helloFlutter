@@ -16,7 +16,7 @@ class _TabBarViewWidgetState extends State<TabBarViewWidget> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            bottom: TabBar(
+            bottom: const TabBar(
               tabs: [],
             ),
             title: const Text('Woolha.com Flutter Tutorial'),
