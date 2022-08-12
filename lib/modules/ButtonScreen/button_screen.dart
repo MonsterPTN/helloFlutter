@@ -187,6 +187,7 @@ class _DemoWidgetState extends State<DemoWidget> {
                     height: 46,
                     onPressed: () {
                       _toggles.value[i].id = !toggles[i].id;
+                      // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
                       _toggles.notifyListeners();
                     },
                     shape: RoundedRectangleBorder(

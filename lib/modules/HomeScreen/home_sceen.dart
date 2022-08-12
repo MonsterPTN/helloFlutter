@@ -5,6 +5,8 @@ import 'package:ui/modules/PricingScreen/pricing_screen.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:video_player/video_player.dart';
 
+import '../NewAppraisal/new_appraisal.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -135,6 +137,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           'Leaving Recalculating process will leave Price Comparison not updated according to your updated values. Are you sure you want to leave?',
                       btn1: 'KEEP & COUNTINE',
                       btn2: 'KEEP OPEN',
+                      onPressbtn1: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NewAppraisalScreen(),
+                          ),
+                        );
+                      },
                     );
                   });
             },

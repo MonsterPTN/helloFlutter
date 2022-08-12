@@ -3,6 +3,7 @@ import 'package:ui/Widget/button_add_widget.dart';
 import 'package:ui/Widget/dropdown_button_widget.dart';
 import 'package:ui/Widget/text_field_prefix.dart';
 import 'package:ui/Widget/text_field_widget.dart';
+import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/text_field_number_widget.dart';
@@ -30,7 +31,6 @@ class _NewAppraisalScreenState extends State<NewAppraisalScreen> {
           child: Column(
             children: [
               Expanded(
-                flex: 9,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -81,15 +81,16 @@ class _NewAppraisalScreenState extends State<NewAppraisalScreen> {
                       Row(
                         children: const [
                           Expanded(
-                              flex: 1,
-                              child: TextFieldPrefix(
-                                maxLength: 2,
-                                textHint: '63',
-                                icon: Icon(
-                                  Icons.add_rounded,
-                                  size: 14,
-                                ),
-                              )),
+                            flex: 1,
+                            child: TextFieldPrefix(
+                              maxLength: 2,
+                              textHint: '63',
+                              icon: Icon(
+                                Icons.add_rounded,
+                                size: 14,
+                              ),
+                            ),
+                          ),
                           SizedBox(
                             width: 16,
                           ),
@@ -106,11 +107,15 @@ class _NewAppraisalScreenState extends State<NewAppraisalScreen> {
                         height: 24,
                       ),
                       textStatus(text: 'Email'),
-                      const TextFieldWidget(textInput: 'Please enter'),
+                      const TextFieldWidget(
+                        textInput: 'Please enter',
+                      ),
                       const SizedBox(
                         height: 24,
                       ),
-                      textStatus(text: 'Expected price'),
+                      textStatus(
+                        text: 'Expected price',
+                      ),
                       const TextFieldPrefix(
                         textHint: 'Please enter',
                         icon: Icon(
@@ -121,18 +126,25 @@ class _NewAppraisalScreenState extends State<NewAppraisalScreen> {
                       const SizedBox(
                         height: 24,
                       ),
-                      textStatus(text: 'Source'),
+                      textStatus(
+                        text: 'Source',
+                      ),
                       const DropDownButtonWidget(
-                        items: ['Please enter', 'Female'],
+                        items: [
+                          'Choose 1',
+                          'Choose 2',
+                        ],
                       ),
                     ],
                   ),
                 ),
               ),
-              Expanded(
+              SizedBox(
+                height: 48,
                 child: PrimariButton(
                   text: "NEXT",
-                  color: Colors.red,
+                  color: AppColors.primari,
+                  colorText: AppColors.backgroundApp,
                   onPressed1: () {},
                 ),
               )

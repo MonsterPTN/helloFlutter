@@ -27,124 +27,114 @@ class _PickImageState extends State<PickImage> {
       child: InkWell(
         onTap: () {
           showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              backgroundColor: Colors.white,
-              builder: (BuildContext context) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: SizedBox(
-                      height: 394,
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 25.75,
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: AppColors.backgroundApp,
+            builder: (BuildContext context) {
+              return Padding(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                child: SizedBox(
+                    height: 394,
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 25.75,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            InkWell(
+                              child:
+                                  SvgPicture.asset('assets/svg/ic_close.svg'),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            const SizedBox(
+                              width: 20.75,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                        SvgPicture.asset('assets/svg/ic_camera.svg'),
+                        const SizedBox(
+                          height: 14.15,
+                        ),
+                        const Text(
+                          'Change Profile Picture',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.w600,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              InkWell(
-                                child:
-                                    SvgPicture.asset('assets/svg/ic_close.svg'),
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(
+                            left: 10,
+                            right: 10,
+                          ),
+                          child: Text(
+                            'Please choose a method to change your profile piture.',
+                            style: StylesText.medium16Text,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        PrimariButton(
+                          onPressed1: () {
+                            getSingleImageCamera();
+                          },
+                          text: 'TAKE PHOTO',
+                          color: AppColors.primari,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            getSingleImage();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.backgroundApp,
+                              border: Border.all(
+                                color: AppColors.black,
+                                width: 2,
                               ),
-                              const SizedBox(
-                                width: 20.75,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 32),
-                          SvgPicture.asset('assets/svg/ic_camera.svg'),
-                          const SizedBox(
-                            height: 14.15,
-                          ),
-                          const Text(
-                            'Change Profile Picture',
-                            style: TextStyle(
-                                fontSize: 26, fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            ),
+                            alignment: Alignment.center,
+                            height: 48,
+                            width: MediaQuery.of(context).size.width,
                             child: Text(
-                              'Please choose a method to change your profile piture.',
-                              style: StylesText.medium16Text,
+                              'CHOOSE OF BIBRALY',
                               textAlign: TextAlign.center,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          PrimariButton(
-                            onPressed1: () {
-                              getSingleImageCamera();
-                            },
-                            text: 'TAKE PHOTO',
-                            color: AppColors.primari,
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              getSingleImage();
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: AppColors.black, width: 2)),
-                              alignment: Alignment.center,
-                              height: 48,
-                              width: MediaQuery.of(context).size.width,
-                              child: Text(
-                                'CHOOSE OF BIBRALY',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: AppColors.black, fontSize: 14),
+                              style: TextStyle(
+                                color: AppColors.black,
+                                fontSize: 14,
                               ),
                             ),
                           ),
-                        ],
-                      )),
-                );
-              });
-          // return Container(
-          //     height: 394,
-          //     child: Center(
-          //         child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Expanded(
-          //           child: _widgetInkWellIcon(
-          //               icon: const Icon(
-          //                 Icons.camera_alt_rounded,
-          //                 size: 30,
-          //               ),
-          //               onTap: getSingleImageCamera),
-          //         ),
-          //         Expanded(
-          //           flex: 1,
-          //           child: _widgetInkWellIcon(
-          //               icon: const Icon(
-          //                 Icons.image,
-          //                 size: 30,
-          //               ),
-          //               onTap: getSingleImage),
-          //         )
-          //       ],
-          //     )),
-          //   );
-          // });
+                        ),
+                      ],
+                    )),
+              );
+            },
+          );
         },
         child: singleImage == null
             ? _widgetImageTest(
                 url:
-                    'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg')
+                    'https://www.kindacode.com/wp-content/uploads/2021/01/blue.jpg',
+              )
             : _widgetImage(),
       ),
     );
@@ -152,11 +142,15 @@ class _PickImageState extends State<PickImage> {
 
   Future getSingleImage() async {
     final pickedImage =
-        await singlePicker.getImage(source: (ImageSource.gallery));
+        // ignore: deprecated_member_use
+        await singlePicker.getImage(
+      source: (ImageSource.gallery),
+    );
     setState(() {
       if (pickedImage != null) {
         singleImage = File(pickedImage.path);
       } else {
+        // ignore: avoid_print
         print("no seclect");
       }
     });
@@ -164,11 +158,15 @@ class _PickImageState extends State<PickImage> {
 
   Future getSingleImageCamera() async {
     final pickedImage =
-        await singlePickerCamera.getImage(source: (ImageSource.camera));
+        // ignore: deprecated_member_use
+        await singlePickerCamera.getImage(
+      source: (ImageSource.camera),
+    );
     setState(() {
       if (pickedImage != null) {
         singleImage = File(pickedImage.path);
       } else {
+        // ignore: avoid_print
         print("no seclect");
       }
     });
@@ -184,10 +182,10 @@ class _PickImageState extends State<PickImage> {
           ),
         ),
         borderRadius: BorderRadius.circular(50),
-        color: Colors.white,
+        color: AppColors.backgroundApp,
         border: Border.all(
           width: 2,
-          color: Colors.white,
+          color: AppColors.backgroundApp,
         ),
       ),
       height: 70,
@@ -195,22 +193,17 @@ class _PickImageState extends State<PickImage> {
     );
   }
 
-  Widget _widgetInkWellIcon({required Icon icon, required Function onTap}) {
-    return InkWell(
-      child: icon,
-      onTap: () {
-        onTap();
-      },
-    );
-  }
-
   Widget _widgetImage() {
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          color: Colors.white,
-          border: Border.all(color: Colors.white, width: 2)),
+        borderRadius: BorderRadius.circular(50),
+        color: AppColors.backgroundApp,
+        border: Border.all(
+          color: AppColors.backgroundApp,
+          width: 2,
+        ),
+      ),
       width: 64,
       height: 64,
       child: Image.file(

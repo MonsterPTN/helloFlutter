@@ -9,8 +9,8 @@ class SimilarModels extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children: [
-            const Expanded(
+          children: const [
+            Expanded(
               flex: 1,
               child: _widgetHeader(),
             ),
@@ -34,8 +34,14 @@ class Station {
   Station(this.id, this.nameCar, this.oDoCar, this.priceCar, this.time);
 }
 
-class MyListView extends StatelessWidget {
-  MyListView({Key? key}) : super(key: key);
+class MyListView extends StatefulWidget {
+  const MyListView({Key? key}) : super(key: key);
+
+  @override
+  State<MyListView> createState() => _MyListViewState();
+}
+
+class _MyListViewState extends State<MyListView> {
   List<Station> stations = [
     Station(1, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
     Station(2, "2022 Toyota Fortuner", "1,200km", "810,000", "31 Aug 2022"),
@@ -85,6 +91,7 @@ class MyListView extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class _widgetHeader extends StatelessWidget {
   const _widgetHeader({
     Key? key,

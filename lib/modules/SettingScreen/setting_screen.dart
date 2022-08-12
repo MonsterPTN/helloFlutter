@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/Widget/app_bar_widget.dart';
 import 'package:ui/themes/app_colors.dart';
-import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/switch_widget.dart';
 import '../../Widget/touch_widget.dart';

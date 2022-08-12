@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+// ignore: depend_on_referenced_packages
 import 'package:image_picker/image_picker.dart';
 
 class PickerImageWidget extends StatefulWidget {
@@ -47,6 +48,7 @@ class _PickerImageWidgetState extends State<PickerImageWidget> {
   }
 
   Future getSingleImage() async {
+    // ignore: deprecated_member_use
     final pickedImage = await singlePicker.getImage(
       source: (ImageSource.gallery),
     );
@@ -55,6 +57,7 @@ class _PickerImageWidgetState extends State<PickerImageWidget> {
         if (pickedImage != null) {
           singleImage = File(pickedImage.path);
         } else {
+          // ignore: avoid_print
           print("no seclect");
         }
       },

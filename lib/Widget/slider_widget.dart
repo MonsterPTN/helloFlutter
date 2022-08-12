@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+// ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
 
 import '../themes/app_colors.dart';
 
+// ignore: must_be_immutable
 class SliderWidget extends StatefulWidget {
   double? rangeStart;
   double? rangeEnd;

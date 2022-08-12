@@ -1,8 +1,4 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:ui/Widget/text_field_widget.dart';
 
 import '../../Widget/cuppertino_widget.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class CupertinoScollPicker extends StatelessWidget {
   final List<Widget> text;
@@ -15,6 +14,7 @@ class CupertinoScollPicker extends StatelessWidget {
         itemExtent: 34,
         children: text,
         onSelectedItemChanged: (int i) {
+          // ignore: avoid_print
           print(i);
         },
       ),
