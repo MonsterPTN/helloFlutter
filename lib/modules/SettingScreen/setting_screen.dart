@@ -19,62 +19,60 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
-      child: Scaffold(
-        appBar: const AppBarWidget(title: 'Setting'),
-        body: Container(
-          color: AppColors.backgroundApp,
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 30,
-              ),
-              TouchWidget(
-                title: "My profile",
-                onPress: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyProfileScreen()));
-                },
-                icon: SvgPicture.asset('assets/svg/ic_user.svg'),
-                icon2: SvgPicture.asset('assets/svg/ic_arrow_right_red.svg'),
-              ),
-              const SizedBox(
-                height: 16.5,
-              ),
-              TouchWidget(
-                  title: "Biometric login",
-                  icon: SvgPicture.asset('assets/svg/ic_face_id.svg'),
-                  onOff: const SwitchWidget()),
-              const SizedBox(
-                height: 16.5,
-              ),
-              TouchWidget(
-                title: "Change Password",
-                icon: SvgPicture.asset('assets/svg/ic_lock.svg'),
-                icon2: SvgPicture.asset('assets/svg/ic_edit.svg'),
-              ),
-              const SizedBox(
-                height: 16.5,
-              ),
-              TouchWidget(
-                title: "Sign out",
-                icon: SvgPicture.asset('assets/svg/ic_sign_out.svg'),
-              ),
-            ],
-          ),
+    return Scaffold(
+      appBar: const AppBarWidget(
+        title: 'Setting',
+      ),
+      body: Container(
+        color: AppColors.backgroundApp,
+        padding: const EdgeInsets.only(
+          left: 20,
+          right: 20,
+        ),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            TouchWidget(
+              title: "My profile",
+              onPress: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MyProfileScreen(),
+                  ),
+                );
+              },
+              icon: SvgPicture.asset('assets/svg/ic_user.svg'),
+              icon2: SvgPicture.asset('assets/svg/ic_arrow_right_red.svg'),
+            ),
+            const SizedBox(
+              height: 16.5,
+            ),
+            TouchWidget(
+              title: "Biometric login",
+              icon: SvgPicture.asset('assets/svg/ic_face_id.svg'),
+              onOff: const SwitchWidget(),
+            ),
+            const SizedBox(
+              height: 16.5,
+            ),
+            TouchWidget(
+              title: "Change Password",
+              icon: SvgPicture.asset('assets/svg/ic_lock.svg'),
+              icon2: SvgPicture.asset('assets/svg/ic_edit.svg'),
+            ),
+            const SizedBox(
+              height: 16.5,
+            ),
+            TouchWidget(
+              title: "Sign out",
+              icon: SvgPicture.asset('assets/svg/ic_sign_out.svg'),
+            ),
+          ],
         ),
       ),
-    );
-  }
-
-  Widget _widgetHeader({required String text}) {
-    return Text(
-      text,
-      textAlign: TextAlign.center,
-      style: StylesText.styleHeader,
     );
   }
 }
