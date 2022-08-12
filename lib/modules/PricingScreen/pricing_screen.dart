@@ -132,7 +132,7 @@ class PricingScreen extends StatelessWidget {
                   const SizedBox(
                     height: 35,
                   ),
-                  ButtonAdd(
+                  PrimariButton(
                     onPressed1: () {
                       showModalBottomSheet(
                           context: context,
@@ -149,8 +149,9 @@ class PricingScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const AppraisalScreen()),
+                                    builder: (context) =>
+                                        const AppraisalScreen(),
+                                  ),
                                 );
                               },
                             );
