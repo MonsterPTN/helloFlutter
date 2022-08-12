@@ -79,7 +79,7 @@ class _PickImageState extends State<PickImage> {
                           const SizedBox(
                             height: 50,
                           ),
-                          ButtonAdd(
+                          PrimariButton(
                             onPressed1: () {
                               getSingleImageCamera();
                             },
