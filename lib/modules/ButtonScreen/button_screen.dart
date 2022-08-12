@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
 import '../../Widget/button_add_widget.dart';
+import '../../models/class.dart';
 import '../PickerScreen/picker_screen.dart';
-import '../models/class.dart';
 
 class DemoWidget extends StatefulWidget {
   const DemoWidget({Key? key}) : super(key: key);
