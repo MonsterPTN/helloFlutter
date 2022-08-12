@@ -6,7 +6,7 @@ import 'package:ui/themes/style_text.dart';
 
 import '../../Widget/divider.dart';
 import '../../Widget/search_field_widget.dart';
-import '../models/station.dart';
+import '../../models/station.dart';
 
 class ListViewScreen extends StatefulWidget {
   const ListViewScreen({Key? key}) : super(key: key);
