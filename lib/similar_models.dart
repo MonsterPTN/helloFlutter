@@ -58,34 +58,34 @@ class _MyListViewState extends State<MyListView> {
       itemBuilder: (context, index) {
         final item = stations[index];
         return Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      item.nameCar,
-                      style: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      item.priceCar,
-                      style: const TextStyle(
-                          color: Colors.red, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(item.oDoCar,
-                        style: const TextStyle(color: Colors.grey)),
-                    Text(item.time, style: const TextStyle(color: Colors.grey)),
-                  ],
-                )
-              ],
-            ));
+          margin: const EdgeInsets.only(top: 10, bottom: 20),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    item.nameCar,
+                    style: const TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    item.priceCar,
+                    style: const TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(item.oDoCar, style: const TextStyle(color: Colors.grey)),
+                  Text(item.time, style: const TextStyle(color: Colors.grey)),
+                ],
+              )
+            ],
+          ),
+        );
       },
     );
   }
