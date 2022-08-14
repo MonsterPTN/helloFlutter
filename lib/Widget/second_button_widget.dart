@@ -4,12 +4,14 @@ import '../themes/app_colors.dart';
 
 class SecondButtonWidget extends StatelessWidget {
   final String text;
-  const SecondButtonWidget({Key? key, required this.text}) : super(key: key);
+  final Function()? onPress;
+  const SecondButtonWidget({Key? key, required this.text, this.onPress})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onPress,
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
