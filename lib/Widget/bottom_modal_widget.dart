@@ -56,7 +56,7 @@ class BottomModalWidget extends StatelessWidget {
             ),
             Text(
               textHeader,
-              style: StylesText.styleHeader,
+              style: StylesText.styleText26,
             ),
             const SizedBox(
               height: 10,
