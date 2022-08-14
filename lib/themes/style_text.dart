@@ -29,6 +29,10 @@ class StylesText {
     fontWeight: FontWeight.w400,
     fontSize: 16,
   );
+  static const styleText26 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 26,
+  );
   static const medium16Text =
       TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
   static const medium14Text =
