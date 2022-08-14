@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/Widget/app_bar_widget.dart';
+import 'package:ui/Widget/bottom_modal_widget_2.dart';
 import 'package:ui/Widget/second_button_widget.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
@@ -90,8 +91,17 @@ class _AppraisalScreenState extends State<AppraisalScreen>
         top: 10,
         bottom: 15,
       ),
-      child: const SecondButtonWidget(
+      child: SecondButtonWidget(
         text: 'THRESHOLD LIMIT',
+        onPress: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            builder: (BuildContext context) {
+              return const BottomModal2Widget();
+            },
+          );
+        },
       ),
     );
   }
