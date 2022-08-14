@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui/Widget/slider1_widget.dart';
 import 'package:ui/Widget/slider_widget.dart';
 import 'package:ui/themes/app_colors.dart';
 import 'package:ui/themes/style_text.dart';
@@ -18,14 +19,20 @@ class _AppraisailTabNationWideScreenPageState
     return Scaffold(
       backgroundColor: AppColors.backgroundApp,
       body: Column(
-        children: [
+        children: <Widget>[
           Expanded(
-            child: _widgetSlider(
-              text: 'Sourcing price of Toyota',
-              rangeStart: 10,
-              rangeEnd: 40,
-              rangeMinSlider: 0,
-              rangeMaxSlider: 50,
+            child: Stack(
+              fit: StackFit.passthrough,
+              children: [
+                _widgetSlider(
+                  text: 'Sourcing price of Toyota',
+                  rangeStart: 10,
+                  rangeEnd: 40,
+                  rangeMinSlider: 0,
+                  rangeMaxSlider: 50,
+                ),
+                const Slider1Widget(),
+              ],
             ),
           ),
           Expanded(
