@@ -10,15 +10,17 @@ class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   final Function()? onBackButtonPressed;
   final bool isShowMainAction;
   final Function()? onMainActionPress;
+  final Future? onTap;
   const AppBarWidget(
       {Key? key,
       this.title,
       this.isShowBack = true,
       this.onBackButtonPressed,
-      this.isShowMainAction = false,
+      this.isShowMainAction = true,
       this.onMainActionPress,
       this.colorAppBar,
-      this.colorTitle})
+      this.colorTitle,
+      this.onTap})
       : super(key: key);
 
   @override
@@ -63,9 +65,12 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       actions: [
         widget.isShowMainAction
             ? InkWell(
+                onTap: () {
+                  widget.onTap;
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child: SvgPicture.asset('assets/svg/ic_arrow_left.svg'),
+                  child: SvgPicture.asset('assets/svg/ic_adjustment.svg'),
                 ),
               )
             : const SizedBox(),
